@@ -84,7 +84,7 @@ export default function ProductsView({ onNavigate, showToast }) {
               <h3>Attendance App</h3>
               <div className="sub">Track workforce activity and reporting.</div>
             </div>
-            <div className="ver blue">v1.6.0</div>
+            <div className="ver blue">v2.0.0</div>
           </div>
           <div className="thumb">
             <div className="mock">

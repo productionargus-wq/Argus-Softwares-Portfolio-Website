@@ -102,7 +102,7 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
               <h3>Attendance App</h3>
               <div className="sub">Smart attendance for productive teams.</div>
             </div>
-            <div className="ver blue">v1.6.0</div>
+            <div className="ver blue">v2.0.0</div>
           </div>
           <div className="thumb">
             <div className="mock">
@@ -123,21 +123,23 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
             <li><i>•</i><span>Shift & overtime automated calculations</span></li>
             <li><i>•</i><span>Export-ready Excel & PDF generation</span></li>
           </ul>
-          {uploads['attendance'] ? (
-            <button className="btn" onClick={() => onDownload('attendance')}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <a
+              href="https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Setup-Windows.exe"
+              className="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+            >
               <Download />
-              <span>Download ({uploads['attendance'].name})</span>
+              <span>Download Windows Installer (152.1 MB)</span>
+            </a>
+            <button className="btn secondary sm" onClick={() => onNavigate('products')}>
+              <span>View All Platforms (Mac, Android, iOS)</span>
             </button>
-          ) : (
-            <button className="btn" onClick={() => triggerUpload('attendance')}>
-              <Upload />
-              <span>Load Local Installer</span>
-            </button>
-          )}
+          </div>
           <div className="small">
-            {uploads['attendance']
-              ? `Loaded: ${(uploads['attendance'].size / 1024 / 1024).toFixed(1)} MB installer ready`
-              : 'Add a local EXE / MSI / ZIP in the browser preview'}
+            Official AI Attendance v2.0.0 • Auto-sync with GitHub CDN
           </div>
         </article>
 

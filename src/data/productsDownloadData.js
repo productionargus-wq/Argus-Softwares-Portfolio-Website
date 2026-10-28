@@ -89,59 +89,77 @@ export const PRODUCTS_DOWNLOAD_DATA = {
 
   attendance: {
     id: 'attendance',
-    title: 'ARGUS Attendance App',
+    title: 'ARGUS AI Attendance App',
     tagline: 'Workforce Shift Tracking, Geofencing & Biometric Sync',
-    version: 'v1.6.0',
-    releaseTag: 'v1.6.0',
-    releaseDate: 'October 2026',
+    version: 'v2.0.0',
+    releaseTag: 'v2.0.0',
+    releaseDate: 'October 28, 2026',
     license: 'Subscription / Enterprise Biometric',
     changelog: [
-      'LAN and Cloud biometric device background polling synchronizer',
-      'Contactless QR code and geofenced smartphone shift punch-in',
-      'Automated late arrival, half-day, and overtime compliance reports',
-      'One-click export to Excel, CSV, and payroll formats'
+      'Official Windows Setup installer (ArgusAttendance-Setup-Windows.exe)',
+      'Windows Portable standalone executable (ArgusAttendance-Standalone-Windows.exe)',
+      'Universal macOS DMG installer (ArgusAttendance-macOS.dmg)',
+      'macOS Portable app bundle (ArgusAttendance-macOS.app.zip)',
+      'Android APK mobile punch package (ArgusAttendance-Android.apk)',
+      'iOS IPA distribution build (ArgusAttendance-iOS.ipa)'
     ],
     platforms: {
       windows: {
         id: 'windows',
         name: 'Windows',
-        osTitle: 'Windows Desktop Admin Console',
+        osTitle: 'Windows Desktop Admin Console (64-bit)',
         extension: '.exe',
-        fileName: 'ArgusAttendance-Admin-v1.6.0-Setup.exe',
-        fileSize: '62.4 MB',
+        fileName: 'ArgusAttendance-Setup-Windows.exe',
+        fileSize: '152.1 MB',
+        downloadUrl: 'https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Setup-Windows.exe',
+        secondaryFileName: 'ArgusAttendance-Standalone-Windows.exe',
+        secondaryFileSize: '151.4 MB',
+        secondaryLabel: 'Portable Standalone (No Install Required)',
+        secondaryActionLabel: 'Download Portable .EXE',
+        secondaryDownloadUrl: 'https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Standalone-Windows.exe',
+        secondarySha256: '3f1d70210f558d1c6deb69ba132ed73de22ade68bb05c10d8757002180fe2971',
         requirements: 'Windows 10 / 11 (64-bit), LAN connection to biometric hardware',
-        sha256: '2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae',
+        sha256: 'c14b7d92ab73f55032a7749f01b014fefb5fb6dee9b7583bbfbf5dec01170940',
         isPrimary: true
       },
       macos: {
         id: 'macos',
         name: 'macOS',
-        osTitle: 'macOS Admin Dashboard',
+        osTitle: 'macOS Admin Dashboard (Apple Silicon & Intel)',
         extension: '.dmg',
-        fileName: 'ArgusAttendance-Console-v1.6.0.dmg',
-        fileSize: '58.1 MB',
-        requirements: 'macOS 12.0 Monterey or later',
-        sha256: 'fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9'
+        fileName: 'ArgusAttendance-macOS.dmg',
+        fileSize: '145.6 MB',
+        downloadUrl: 'https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-macOS.dmg',
+        secondaryFileName: 'ArgusAttendance-macOS.app.zip',
+        secondaryFileSize: '143.2 MB',
+        secondaryLabel: 'macOS Portable Application Bundle',
+        secondaryActionLabel: 'Download App .ZIP',
+        secondaryDownloadUrl: 'https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-macOS.app.zip',
+        secondarySha256: '92e76ae2dfdb84797ea808c8858bbdceebb1fcb5d416114291da400e8f399f92',
+        requirements: 'macOS 12.0 Monterey or later (Universal binary)',
+        sha256: 'b82888087b2097217f285b675853319aea97c598d8f15dd6689eaf0a5327ea6e'
       },
       android: {
         id: 'android',
         name: 'Android',
         osTitle: 'Android Employee & Guard Punch App',
         extension: '.apk',
-        fileName: 'ArgusAttendance-Punch-v1.6.0.apk',
-        fileSize: '16.2 MB',
+        fileName: 'ArgusAttendance-Android.apk',
+        fileSize: '3.75 MB',
+        downloadUrl: 'https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Android.apk',
         requirements: 'Android 8.0 or later with GPS & Camera support',
-        sha256: 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'
+        sha256: '07a19d6c3a203fbd698e8918167c457cab6c56f06a89a99643541e28d35d97d0'
       },
       ios: {
         id: 'ios',
         name: 'iOS',
         osTitle: 'iOS Employee App',
         extension: '.ipa',
-        fileName: 'ArgusAttendance-v1.6.0.ipa',
-        fileSize: '21.5 MB',
-        requirements: 'iOS 15.0 or later',
-        sha256: 'b3a8e0e1f9ab1bfe3a36f231f676f78bb30a519d2b21e6c530c0eee8ebb4a5d0'
+        fileName: 'ArgusAttendance-iOS.ipa',
+        fileSize: '895 KB',
+        downloadUrl: 'https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-iOS.ipa',
+        requirements: 'iOS 15.0 or later (Direct Enterprise / TestFlight build)',
+        sha256: 'dda92a4586d1665fd3c62f8099c4d5fa46e8b8fdff46fd5824e70eeaac1a7746'
       }
     }
   },

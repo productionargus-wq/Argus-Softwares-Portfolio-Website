@@ -11,13 +11,19 @@ const platformIconMap = {
   linux: <Terminal style={{ width: '18px', height: '18px' }} />
 };
 
+const GITHUB_REPO_MAP = {
+  metalcalc: 'productionargus-wq/Metal-Calculator-And-Quotation-Suite',
+  attendance: 'productionargus-wq/Simple-AI-Attendance'
+};
+
 export default function ProductDownloadModal({ productKey, onClose, showToast }) {
   const baseProduct = PRODUCTS_DOWNLOAD_DATA[productKey] || PRODUCTS_DOWNLOAD_DATA.metalcalc;
   const [productData, setProductData] = useState(baseProduct);
   const [isLiveSync, setIsLiveSync] = useState(false);
-  const [isFetchingRelease, setIsFetchingRelease] = useState(productKey === 'metalcalc');
+  const repoName = GITHUB_REPO_MAP[productKey];
+  const [isFetchingRelease, setIsFetchingRelease] = useState(Boolean(repoName));
   const [releaseUrl, setReleaseUrl] = useState(
-    'https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/latest'
+    repoName ? `https://github.com/${repoName}/releases/latest` : ''
   );
 
   const platformKeys = Object.keys(productData.platforms);
@@ -27,15 +33,15 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
   // Auto-fetch latest release from GitHub API dynamically
   useEffect(() => {
     let isMounted = true;
-    if (productKey === 'metalcalc') {
-      fetch('https://api.github.com/repos/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/latest')
+    if (repoName) {
+      fetch(`https://api.github.com/repos/${repoName}/releases/latest`)
         .then((res) => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           return res.json();
         })
         .then((latest) => {
           if (!isMounted || !latest) return;
-          setReleaseUrl(latest.html_url || 'https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/latest');
+          setReleaseUrl(latest.html_url || `https://github.com/${repoName}/releases/latest`);
 
           // Dynamically map uploaded GitHub release assets to corresponding platform tabs
           const updatedPlatforms = { ...baseProduct.platforms };
@@ -43,7 +49,9 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
           if (Array.isArray(latest.assets)) {
             latest.assets.forEach((asset) => {
               const nameLower = (asset.name || '').toLowerCase();
-              const sizeInMb = (asset.size / (1024 * 1024)).toFixed(1) + ' MB';
+              const sizeFormatted = asset.size < 1024 * 1024
+                ? (asset.size / 1024).toFixed(0) + ' KB'
+                : (asset.size / (1024 * 1024)).toFixed(1) + ' MB';
               const sha = asset.digest ? asset.digest.replace('sha256:', '') : null;
 
               // Windows Setup Installer
@@ -51,7 +59,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 updatedPlatforms.windows = {
                   ...updatedPlatforms.windows,
                   fileName: asset.name,
-                  fileSize: sizeInMb,
+                  fileSize: sizeFormatted,
                   downloadUrl: asset.browser_download_url,
                   sha256: sha || updatedPlatforms.windows.sha256
                 };
@@ -61,7 +69,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 updatedPlatforms.windows = {
                   ...updatedPlatforms.windows,
                   secondaryFileName: asset.name,
-                  secondaryFileSize: sizeInMb,
+                  secondaryFileSize: sizeFormatted,
                   secondaryDownloadUrl: asset.browser_download_url,
                   secondarySha256: sha || updatedPlatforms.windows.secondarySha256
                 };
@@ -71,7 +79,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 updatedPlatforms.windows = {
                   ...updatedPlatforms.windows,
                   fileName: asset.name,
-                  fileSize: sizeInMb,
+                  fileSize: sizeFormatted,
                   downloadUrl: asset.browser_download_url,
                   sha256: sha || updatedPlatforms.windows.sha256
                 };
@@ -82,28 +90,28 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 updatedPlatforms.macos = {
                   ...updatedPlatforms.macos,
                   fileName: asset.name,
-                  fileSize: sizeInMb,
+                  fileSize: sizeFormatted,
                   downloadUrl: asset.browser_download_url,
                   sha256: sha || updatedPlatforms.macos.sha256
                 };
               }
               // macOS Portable App (.ZIP)
-              else if ((nameLower.includes('macos') || nameLower.includes('mac')) && nameLower.endsWith('.zip') && updatedPlatforms.macos) {
+              else if ((nameLower.includes('macos') || nameLower.includes('mac') || nameLower.includes('app')) && nameLower.endsWith('.zip') && updatedPlatforms.macos) {
                 updatedPlatforms.macos = {
                   ...updatedPlatforms.macos,
                   secondaryFileName: asset.name,
-                  secondaryFileSize: sizeInMb,
+                  secondaryFileSize: sizeFormatted,
                   secondaryDownloadUrl: asset.browser_download_url,
                   secondarySha256: sha || updatedPlatforms.macos.secondarySha256
                 };
               }
 
-              // Android APK
-              if (nameLower.endsWith('.apk') && updatedPlatforms.android) {
+              // Android APK (skip debug APK)
+              if (nameLower.endsWith('.apk') && !nameLower.includes('debug') && updatedPlatforms.android) {
                 updatedPlatforms.android = {
                   ...updatedPlatforms.android,
                   fileName: asset.name,
-                  fileSize: sizeInMb,
+                  fileSize: sizeFormatted,
                   downloadUrl: asset.browser_download_url,
                   sha256: sha || updatedPlatforms.android.sha256
                 };
@@ -114,7 +122,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 updatedPlatforms.ios = {
                   ...updatedPlatforms.ios,
                   fileName: asset.name,
-                  fileSize: sizeInMb,
+                  fileSize: sizeFormatted,
                   downloadUrl: asset.browser_download_url,
                   sha256: sha || updatedPlatforms.ios.sha256
                 };
@@ -149,7 +157,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
     return () => {
       isMounted = false;
     };
-  }, [productKey, baseProduct]);
+  }, [productKey, baseProduct, repoName]);
 
   const currentPkg = productData.platforms[selectedPlatform] || productData.platforms[platformKeys[0]];
 
