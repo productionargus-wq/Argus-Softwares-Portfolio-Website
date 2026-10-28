@@ -56,33 +56,39 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
 
               // Windows Setup Installer
               if (nameLower.includes('setup') && nameLower.endsWith('.exe') && updatedPlatforms.windows) {
-                updatedPlatforms.windows = {
-                  ...updatedPlatforms.windows,
-                  fileName: asset.name,
-                  fileSize: sizeFormatted,
-                  downloadUrl: asset.browser_download_url,
-                  sha256: sha || updatedPlatforms.windows.sha256
-                };
+                if (!baseProduct.platforms.windows?.downloadUrl?.startsWith('/')) {
+                  updatedPlatforms.windows = {
+                    ...updatedPlatforms.windows,
+                    fileName: asset.name,
+                    fileSize: sizeFormatted,
+                    downloadUrl: asset.browser_download_url,
+                    sha256: sha || updatedPlatforms.windows.sha256
+                  };
+                }
               }
               // Windows Standalone Portable Executable
               else if (nameLower.includes('standalone') && nameLower.endsWith('.exe') && updatedPlatforms.windows) {
-                updatedPlatforms.windows = {
-                  ...updatedPlatforms.windows,
-                  secondaryFileName: asset.name,
-                  secondaryFileSize: sizeFormatted,
-                  secondaryDownloadUrl: asset.browser_download_url,
-                  secondarySha256: sha || updatedPlatforms.windows.secondarySha256
-                };
+                if (!baseProduct.platforms.windows?.downloadUrl?.startsWith('/')) {
+                  updatedPlatforms.windows = {
+                    ...updatedPlatforms.windows,
+                    secondaryFileName: asset.name,
+                    secondaryFileSize: sizeFormatted,
+                    secondaryDownloadUrl: asset.browser_download_url,
+                    secondarySha256: sha || updatedPlatforms.windows.secondarySha256
+                  };
+                }
               }
               // Fallback any .exe
               else if (nameLower.endsWith('.exe') && updatedPlatforms.windows && !updatedPlatforms.windows.downloadUrl) {
-                updatedPlatforms.windows = {
-                  ...updatedPlatforms.windows,
-                  fileName: asset.name,
-                  fileSize: sizeFormatted,
-                  downloadUrl: asset.browser_download_url,
-                  sha256: sha || updatedPlatforms.windows.sha256
-                };
+                if (!baseProduct.platforms.windows?.downloadUrl?.startsWith('/')) {
+                  updatedPlatforms.windows = {
+                    ...updatedPlatforms.windows,
+                    fileName: asset.name,
+                    fileSize: sizeFormatted,
+                    downloadUrl: asset.browser_download_url,
+                    sha256: sha || updatedPlatforms.windows.sha256
+                  };
+                }
               }
 
               // macOS DMG Installer
@@ -192,13 +198,15 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
 
   const handleTriggerDownload = (fileName, customUrl) => {
     const downloadUrl = customUrl || currentPkg?.downloadUrl;
-    // If real GitHub Release download URL is available, trigger direct CDN download
+    // If download URL is available (local path or external CDN), trigger direct download
     if (downloadUrl) {
       const link = document.createElement('a');
       link.href = downloadUrl;
       link.download = fileName;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
+      if (downloadUrl.startsWith('http')) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -330,7 +338,9 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                     {currentPkg.requirements}
                   </div>
                   <div className="cdn-note">
-                    ⚡ Direct high-speed download hosted on GitHub Global CDN
+                    {currentPkg.downloadUrl?.startsWith('/')
+                      ? '⚡ Direct high-speed download hosted on site package server'
+                      : '⚡ Direct high-speed download hosted on GitHub Global CDN'}
                   </div>
                 </div>
               </div>
@@ -347,8 +357,8 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                   <a
                     href={currentPkg.downloadUrl}
                     download={currentPkg.fileName}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={currentPkg.downloadUrl.startsWith('http') ? '_blank' : undefined}
+                    rel={currentPkg.downloadUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
                     style={{ fontSize: '11px', color: '#64748b', textDecoration: 'underline' }}
                   >
                     Direct mirror link

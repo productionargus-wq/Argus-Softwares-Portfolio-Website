@@ -74,21 +74,19 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
           </ul>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <a
-              href="https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/latest/download/MetalCalculator-Setup-Windows.exe"
+              href="/MetalCalculator.exe"
               className="btn"
-              target="_blank"
-              rel="noopener noreferrer"
-              download
+              download="MetalCalculator.exe"
             >
               <Download />
-              <span>Download Windows Installer (32.1 MB)</span>
+              <span>Download Windows Executable (53.5 MB)</span>
             </a>
             <button className="btn secondary sm" onClick={() => onNavigate('products')}>
               <span>View All Platforms (Mac, Android, iOS)</span>
             </button>
           </div>
           <div className="small">
-            Official MetalCalc release • Auto-sync with GitHub CDN
+            Official MetalCalc Executable • Direct Download (53.5 MB)
           </div>
         </article>
 
