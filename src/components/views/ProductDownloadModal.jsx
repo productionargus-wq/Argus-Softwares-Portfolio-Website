@@ -17,7 +17,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
   const [isLiveSync, setIsLiveSync] = useState(false);
   const [isFetchingRelease, setIsFetchingRelease] = useState(productKey === 'metalcalc');
   const [releaseUrl, setReleaseUrl] = useState(
-    'https://github.com/productionargus-wq/Argus-Portfolio-Website/releases'
+    'https://github.com/productionargus-wq/Argus-Softwares-Portfolio-Website/releases'
   );
 
   const platformKeys = Object.keys(productData.platforms);
@@ -28,7 +28,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
   useEffect(() => {
     let isMounted = true;
     if (productKey === 'metalcalc') {
-      fetch('https://api.github.com/repos/productionargus-wq/Argus-Portfolio-Website/releases')
+      fetch('https://api.github.com/repos/productionargus-wq/Argus-Softwares-Portfolio-Website/releases')
         .then((res) => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           return res.json();
@@ -36,7 +36,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
         .then((releases) => {
           if (!isMounted || !Array.isArray(releases) || releases.length === 0) return;
           const latest = releases[0];
-          setReleaseUrl(latest.html_url || 'https://github.com/productionargus-wq/Argus-Portfolio-Website/releases');
+          setReleaseUrl(latest.html_url || 'https://github.com/productionargus-wq/Argus-Softwares-Portfolio-Website/releases');
 
           // Dynamically map uploaded GitHub release assets to corresponding platform tabs
           const updatedPlatforms = { ...baseProduct.platforms };
