@@ -17,7 +17,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
   const [isLiveSync, setIsLiveSync] = useState(false);
   const [isFetchingRelease, setIsFetchingRelease] = useState(productKey === 'metalcalc');
   const [releaseUrl, setReleaseUrl] = useState(
-    'https://github.com/productionargus-wq/Argus-Softwares-Portfolio-Website/releases'
+    'https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/latest'
   );
 
   const platformKeys = Object.keys(productData.platforms);
@@ -28,15 +28,14 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
   useEffect(() => {
     let isMounted = true;
     if (productKey === 'metalcalc') {
-      fetch('https://api.github.com/repos/productionargus-wq/Argus-Softwares-Portfolio-Website/releases')
+      fetch('https://api.github.com/repos/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/latest')
         .then((res) => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           return res.json();
         })
-        .then((releases) => {
-          if (!isMounted || !Array.isArray(releases) || releases.length === 0) return;
-          const latest = releases[0];
-          setReleaseUrl(latest.html_url || 'https://github.com/productionargus-wq/Argus-Softwares-Portfolio-Website/releases');
+        .then((latest) => {
+          if (!isMounted || !latest) return;
+          setReleaseUrl(latest.html_url || 'https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/latest');
 
           // Dynamically map uploaded GitHub release assets to corresponding platform tabs
           const updatedPlatforms = { ...baseProduct.platforms };
@@ -47,7 +46,8 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
               const sizeInMb = (asset.size / (1024 * 1024)).toFixed(1) + ' MB';
               const sha = asset.digest ? asset.digest.replace('sha256:', '') : null;
 
-              if (nameLower.endsWith('.exe') && updatedPlatforms.windows) {
+              // Windows Setup Installer
+              if (nameLower.includes('setup') && nameLower.endsWith('.exe') && updatedPlatforms.windows) {
                 updatedPlatforms.windows = {
                   ...updatedPlatforms.windows,
                   fileName: asset.name,
@@ -55,7 +55,30 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                   downloadUrl: asset.browser_download_url,
                   sha256: sha || updatedPlatforms.windows.sha256
                 };
-              } else if (nameLower.endsWith('.dmg') && updatedPlatforms.macos) {
+              }
+              // Windows Standalone Portable Executable
+              else if (nameLower.includes('standalone') && nameLower.endsWith('.exe') && updatedPlatforms.windows) {
+                updatedPlatforms.windows = {
+                  ...updatedPlatforms.windows,
+                  secondaryFileName: asset.name,
+                  secondaryFileSize: sizeInMb,
+                  secondaryDownloadUrl: asset.browser_download_url,
+                  secondarySha256: sha || updatedPlatforms.windows.secondarySha256
+                };
+              }
+              // Fallback any .exe
+              else if (nameLower.endsWith('.exe') && updatedPlatforms.windows && !updatedPlatforms.windows.downloadUrl) {
+                updatedPlatforms.windows = {
+                  ...updatedPlatforms.windows,
+                  fileName: asset.name,
+                  fileSize: sizeInMb,
+                  downloadUrl: asset.browser_download_url,
+                  sha256: sha || updatedPlatforms.windows.sha256
+                };
+              }
+
+              // macOS DMG Installer
+              if (nameLower.endsWith('.dmg') && updatedPlatforms.macos) {
                 updatedPlatforms.macos = {
                   ...updatedPlatforms.macos,
                   fileName: asset.name,
@@ -63,7 +86,20 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                   downloadUrl: asset.browser_download_url,
                   sha256: sha || updatedPlatforms.macos.sha256
                 };
-              } else if (nameLower.endsWith('.apk') && updatedPlatforms.android) {
+              }
+              // macOS Portable App (.ZIP)
+              else if ((nameLower.includes('macos') || nameLower.includes('mac')) && nameLower.endsWith('.zip') && updatedPlatforms.macos) {
+                updatedPlatforms.macos = {
+                  ...updatedPlatforms.macos,
+                  secondaryFileName: asset.name,
+                  secondaryFileSize: sizeInMb,
+                  secondaryDownloadUrl: asset.browser_download_url,
+                  secondarySha256: sha || updatedPlatforms.macos.secondarySha256
+                };
+              }
+
+              // Android APK
+              if (nameLower.endsWith('.apk') && updatedPlatforms.android) {
                 updatedPlatforms.android = {
                   ...updatedPlatforms.android,
                   fileName: asset.name,
@@ -71,7 +107,10 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                   downloadUrl: asset.browser_download_url,
                   sha256: sha || updatedPlatforms.android.sha256
                 };
-              } else if (nameLower.endsWith('.ipa') && updatedPlatforms.ios) {
+              }
+
+              // iOS IPA
+              if (nameLower.endsWith('.ipa') && updatedPlatforms.ios) {
                 updatedPlatforms.ios = {
                   ...updatedPlatforms.ios,
                   fileName: asset.name,
@@ -143,18 +182,19 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
     }
   };
 
-  const handleTriggerDownload = (fileName) => {
+  const handleTriggerDownload = (fileName, customUrl) => {
+    const downloadUrl = customUrl || currentPkg?.downloadUrl;
     // If real GitHub Release download URL is available, trigger direct CDN download
-    if (currentPkg?.downloadUrl) {
+    if (downloadUrl) {
       const link = document.createElement('a');
-      link.href = currentPkg.downloadUrl;
+      link.href = downloadUrl;
       link.download = fileName;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      showToast?.(`Starting direct download: ${fileName} (${currentPkg.fileSize})`);
+      showToast?.(`Starting direct download: ${fileName}`);
       return;
     }
 
@@ -309,18 +349,20 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
               </div>
             </div>
 
-            {/* Secondary Enterprise installer if available */}
-            {currentPkg.secondaryFile && (
-              <div className="secondary-pkg-row">
+            {/* Secondary installer / portable option if available */}
+            {(currentPkg.secondaryFileName || currentPkg.secondaryFile) && (
+              <div className="secondary-pkg-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', marginTop: '10px' }}>
                 <span style={{ fontSize: '12px', color: '#475569' }}>
-                  Enterprise silent deployment: <strong>{currentPkg.secondaryFile}</strong>
+                  {currentPkg.secondaryLabel || 'Alternative distribution'}: <strong>{currentPkg.secondaryFileName || currentPkg.secondaryFile}</strong>
+                  {currentPkg.secondaryFileSize && ` (${currentPkg.secondaryFileSize})`}
                 </span>
                 <button
                   className="btn secondary sm"
-                  onClick={() => handleTriggerDownload(currentPkg.secondaryFile.split(' ')[0])}
+                  onClick={() => handleTriggerDownload(currentPkg.secondaryFileName || currentPkg.secondaryFile?.split(' ')[0], currentPkg.secondaryDownloadUrl)}
+                  title={`Download ${currentPkg.secondaryFileName || currentPkg.secondaryFile}`}
                 >
                   <Download style={{ width: '14px', height: '14px' }} />
-                  <span>Download MSI / Alt</span>
+                  <span>{currentPkg.secondaryActionLabel || 'Download Alternative'}</span>
                 </button>
               </div>
             )}

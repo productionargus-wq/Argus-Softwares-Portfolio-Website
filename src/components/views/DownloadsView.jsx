@@ -72,21 +72,23 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
             <li><i>•</i><span>Windows 10 / 11 64-bit native application</span></li>
             <li><i>•</i><span>Offline standalone executable</span></li>
           </ul>
-          {uploads['metalcalc'] ? (
-            <button className="btn" onClick={() => onDownload('metalcalc')}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <a
+              href="https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/latest/download/MetalCalculator-Setup-Windows.exe"
+              className="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+            >
               <Download />
-              <span>Download ({uploads['metalcalc'].name})</span>
+              <span>Download Windows Installer (32.1 MB)</span>
+            </a>
+            <button className="btn secondary sm" onClick={() => onNavigate('products')}>
+              <span>View All Platforms (Mac, Android, iOS)</span>
             </button>
-          ) : (
-            <button className="btn" onClick={() => triggerUpload('metalcalc')}>
-              <Upload />
-              <span>Load Local Installer</span>
-            </button>
-          )}
+          </div>
           <div className="small">
-            {uploads['metalcalc']
-              ? `Loaded: ${(uploads['metalcalc'].size / 1024 / 1024).toFixed(1)} MB installer ready`
-              : 'Add a local EXE / MSI / ZIP in the browser preview'}
+            Official MetalCalc release • Auto-sync with GitHub CDN
           </div>
         </article>
 
