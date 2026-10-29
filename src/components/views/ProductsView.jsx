@@ -32,7 +32,7 @@ export default function ProductsView({ onNavigate, showToast }) {
               <h3>MetalCalc</h3>
               <div className="sub">Engineering calculations for manufacturing.</div>
             </div>
-            <div className="ver">v3.2.1</div>
+            <div className="ver">v1.0.1</div>
           </div>
           <div className="thumb">
             <div className="mock">

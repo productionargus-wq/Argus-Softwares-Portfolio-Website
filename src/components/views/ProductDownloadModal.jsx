@@ -56,39 +56,33 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
 
               // Windows Setup Installer
               if (nameLower.includes('setup') && nameLower.endsWith('.exe') && updatedPlatforms.windows) {
-                if (!baseProduct.platforms.windows?.downloadUrl?.startsWith('/')) {
-                  updatedPlatforms.windows = {
-                    ...updatedPlatforms.windows,
-                    fileName: asset.name,
-                    fileSize: sizeFormatted,
-                    downloadUrl: asset.browser_download_url,
-                    sha256: sha || updatedPlatforms.windows.sha256
-                  };
-                }
+                updatedPlatforms.windows = {
+                  ...updatedPlatforms.windows,
+                  fileName: asset.name,
+                  fileSize: sizeFormatted,
+                  downloadUrl: asset.browser_download_url,
+                  sha256: sha || updatedPlatforms.windows.sha256
+                };
               }
               // Windows Standalone Portable Executable
               else if (nameLower.includes('standalone') && nameLower.endsWith('.exe') && updatedPlatforms.windows) {
-                if (!baseProduct.platforms.windows?.downloadUrl?.startsWith('/')) {
-                  updatedPlatforms.windows = {
-                    ...updatedPlatforms.windows,
-                    secondaryFileName: asset.name,
-                    secondaryFileSize: sizeFormatted,
-                    secondaryDownloadUrl: asset.browser_download_url,
-                    secondarySha256: sha || updatedPlatforms.windows.secondarySha256
-                  };
-                }
+                updatedPlatforms.windows = {
+                  ...updatedPlatforms.windows,
+                  secondaryFileName: asset.name,
+                  secondaryFileSize: sizeFormatted,
+                  secondaryDownloadUrl: asset.browser_download_url,
+                  secondarySha256: sha || updatedPlatforms.windows.secondarySha256
+                };
               }
               // Fallback any .exe
               else if (nameLower.endsWith('.exe') && updatedPlatforms.windows && !updatedPlatforms.windows.downloadUrl) {
-                if (!baseProduct.platforms.windows?.downloadUrl?.startsWith('/')) {
-                  updatedPlatforms.windows = {
-                    ...updatedPlatforms.windows,
-                    fileName: asset.name,
-                    fileSize: sizeFormatted,
-                    downloadUrl: asset.browser_download_url,
-                    sha256: sha || updatedPlatforms.windows.sha256
-                  };
-                }
+                updatedPlatforms.windows = {
+                  ...updatedPlatforms.windows,
+                  fileName: asset.name,
+                  fileSize: sizeFormatted,
+                  downloadUrl: asset.browser_download_url,
+                  sha256: sha || updatedPlatforms.windows.sha256
+                };
               }
 
               // macOS DMG Installer

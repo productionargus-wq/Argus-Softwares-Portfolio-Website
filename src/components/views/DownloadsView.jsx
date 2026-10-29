@@ -56,7 +56,7 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
               <h3>MetalCalc</h3>
               <div className="sub">Precision calculations for modern manufacturing.</div>
             </div>
-            <div className="ver">v3.2.1</div>
+            <div className="ver">v1.0.1</div>
           </div>
           <div className="thumb">
             <div className="mock">
@@ -74,19 +74,21 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
           </ul>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <a
-              href="/MetalCalculator.exe"
+              href="https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/download/v1.0.1/MetalCalculator-Setup-Windows.exe"
               className="btn"
-              download="MetalCalculator.exe"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
             >
               <Download />
-              <span>Download Windows Executable (53.5 MB)</span>
+              <span>Download Windows Installer (44.7 MB)</span>
             </a>
             <button className="btn secondary sm" onClick={() => onNavigate('products')}>
               <span>View All Platforms (Mac, Android, iOS)</span>
             </button>
           </div>
           <div className="small">
-            Official MetalCalc Executable • Direct Download (53.5 MB)
+            Official MetalCalc v1.0.1 • Direct GitHub Release CDN
           </div>
         </article>
 
