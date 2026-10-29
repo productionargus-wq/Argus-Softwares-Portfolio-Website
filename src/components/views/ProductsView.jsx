@@ -75,60 +75,60 @@ export default function ProductsView({ onNavigate, showToast }) {
         </article>
 
         {/* Attendance App Card */}
-        <article className="card clickable-card" onClick={(e) => openDownloadModal('attendance', e)}>
+        <article className="card clickable-card" onClick={() => onNavigate('attendance')}>
           <div className="top">
             <div className="ic blue">
               <Users />
             </div>
             <div>
-              <h3>Attendance App</h3>
-              <div className="sub">Track workforce activity and reporting.</div>
+              <h3>AI Attendance</h3>
+              <div className="sub">Enterprise AI biometrics & operating manual.</div>
             </div>
-            <div className="ver blue">v2.0.0</div>
+            <div className="ver blue">v5.1</div>
           </div>
           <div className="thumb">
             <div className="mock">
-              <b>Today's Attendance</b>
-              Present: 46<br />
-              Absent: 3<br />
-              On Leave: 2
+              <b>ARGUS Attendance v5.1</b>
+              128D Deep Face Engine<br />
+              Haversine GPS Geofence<br />
+              Automated Payroll & OT
             </div>
             <div className="mock">
-              <b>Dashboard</b>
-              Check-in / Check-out<br />
-              Employee Records<br />
-              Reports & Analytics
+              <b>Enterprise Modules</b>
+              Live Camera Stream<br />
+              Leaves & Balance Sheet<br />
+              Field Worker Tracking
             </div>
           </div>
           <ul className="bullets">
-            <li><i>•</i><span>Employee check-in & biometric sync</span></li>
-            <li><i>•</i><span>Desktop Admin Console (.exe, .dmg)</span></li>
-            <li><i>•</i><span>Mobile Punch & Geofence (.apk, .ipa)</span></li>
+            <li><i>•</i><span>128D Face Biometrics & Anti-Spoofing Liveness</span></li>
+            <li><i>•</i><span>GPS Geofence Locking (100m–500m radius)</span></li>
+            <li><i>•</i><span>Automated Payroll, Disbursals & ReportLab Payslips</span></li>
           </ul>
 
           <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
             <button
               className="btn"
-              style={{ flex: 1, background: 'linear-gradient(180deg, var(--blue), #005ecb)' }}
-              onClick={(e) => openDownloadModal('attendance', e)}
-              title="View download files for Windows, Mac, Android, iOS"
-            >
-              <Download />
-              <span>Download Files</span>
-            </button>
-            <button
-              className="btn secondary"
-              style={{ padding: '0 12px' }}
+              style={{ flex: 1, background: 'linear-gradient(180deg, var(--green), #00936b)' }}
               onClick={(e) => {
                 e.stopPropagation();
                 onNavigate('attendance');
               }}
-              title="Explore live attendance shift simulator"
+              title="Explore full interactive enterprise manual & operating guide"
             >
-              <ExternalLink style={{ width: '16px', height: '16px' }} />
+              <ExternalLink style={{ width: '15px', height: '15px' }} />
+              <span>Explore Enterprise Guide</span>
+            </button>
+            <button
+              className="btn secondary"
+              style={{ padding: '0 12px' }}
+              onClick={(e) => openDownloadModal('attendance', e)}
+              title="View download files for Windows, Mac, Android, iOS"
+            >
+              <Download style={{ width: '16px', height: '16px' }} />
             </button>
           </div>
-          <div className="small">Click to view .exe, .dmg, .apk packages</div>
+          <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
 
         {/* ERP App Card */}
