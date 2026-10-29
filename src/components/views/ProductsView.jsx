@@ -23,55 +23,60 @@ export default function ProductsView({ onNavigate, showToast }) {
 
       <div className="grid3">
         {/* MetalCalc Card */}
-        <article className="card clickable-card" onClick={(e) => openDownloadModal('metalcalc', e)}>
+        <article className="card clickable-card" onClick={() => onNavigate('metalcalc')}>
           <div className="top">
             <div className="ic">
               <Calculator />
             </div>
             <div>
-              <h3>MetalCalc</h3>
-              <div className="sub">Engineering calculations for manufacturing.</div>
+              <h3>MetalCalc Suite</h3>
+              <div className="sub">Enterprise CNC quotation & CAD weight manual.</div>
             </div>
-            <div className="ver">v1.0.1</div>
+            <div className="ver">v7.5.0</div>
           </div>
           <div className="thumb">
             <div className="mock">
-              <b>Metal Weight Calculator</b>
-              Round • Square • Flat<br />
-              Pipe • Hex • Angle<br />
-              Channel • I-Beam
+              <b>MetalCalc v7.5.0</b>
+              8 Geometric Profiles<br />
+              Parametric Vector SVG<br />
+              Live Metals-API Ticker
             </div>
-            <div className="shape"></div>
+            <div className="mock">
+              <b>Enterprise Modules</b>
+              Gemini AI Vision Estimator<br />
+              GST Multi-Item BOM Maker<br />
+              Resend Transactional Email
+            </div>
           </div>
           <ul className="bullets">
-            <li><i>•</i><span>Fast & accurate machine shop calculations</span></li>
-            <li><i>•</i><span>Windows (.exe, .msi) & macOS (.dmg)</span></li>
-            <li><i>•</i><span>Android (.apk) & iOS (.ipa) mobile support</span></li>
+            <li><i>•</i><span>8 geometric profiles, CAD SVG & Metals-API live ticker</span></li>
+            <li><i>•</i><span>Gemini AI 2D drawing cycle time & tooling estimation</span></li>
+            <li><i>•</i><span>Commercial BOM, machining routings & statutory GST PDFs</span></li>
           </ul>
 
           <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
             <button
               className="btn"
-              style={{ flex: 1 }}
-              onClick={(e) => openDownloadModal('metalcalc', e)}
-              title="View download files for Windows, Mac, Android, iOS"
-            >
-              <Download />
-              <span>Download Files</span>
-            </button>
-            <button
-              className="btn secondary"
-              style={{ padding: '0 12px' }}
+              style={{ flex: 1, background: 'linear-gradient(180deg, var(--orange), #d94800)' }}
               onClick={(e) => {
                 e.stopPropagation();
                 onNavigate('metalcalc');
               }}
-              title="Explore live interactive calculator demo"
+              title="Explore full interactive enterprise manual & operating guide"
             >
-              <ExternalLink style={{ width: '16px', height: '16px' }} />
+              <ExternalLink style={{ width: '15px', height: '15px' }} />
+              <span>Explore Enterprise Guide</span>
+            </button>
+            <button
+              className="btn secondary"
+              style={{ padding: '0 12px' }}
+              onClick={(e) => openDownloadModal('metalcalc', e)}
+              title="View download files for Windows, Mac, Android, iOS"
+            >
+              <Download style={{ width: '16px', height: '16px' }} />
             </button>
           </div>
-          <div className="small">Click to view .exe, .dmg, .apk packages</div>
+          <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
 
         {/* Attendance App Card */}
