@@ -21,9 +21,15 @@ export default function NavigationRail({ side = 'left', activeSection, onSelectS
     <aside className={`rail ${side}`} aria-label={`${side} navigation rail`}>
       <div className="rail-group">
         {side === 'left' && (
-          <div className="brand-mark" aria-hidden="true" title="ARGUS Softwares">
+          <button
+            type="button"
+            className={`brand-mark ${activeSection === 'products' ? 'active-home' : ''}`}
+            onClick={() => onSelectSection('products', true)}
+            title="ARGUS Softwares - Return to Products Home"
+            aria-label="ARGUS Softwares Home"
+          >
             <span>A</span>
-          </div>
+          </button>
         )}
 
         {sections.map((section) => {

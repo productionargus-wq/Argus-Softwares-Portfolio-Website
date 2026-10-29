@@ -69,7 +69,7 @@ export default function ProductsView({ onNavigate, showToast }) {
             </button>
             <button
               className="btn secondary"
-              style={{ padding: '0 12px' }}
+              style={{ padding: '0 12px', flexShrink: 0 }}
               onClick={(e) => openDownloadModal('metalcalc', e)}
               title="View download files for Windows, Mac, Android, iOS"
             >
@@ -126,7 +126,7 @@ export default function ProductsView({ onNavigate, showToast }) {
             </button>
             <button
               className="btn secondary"
-              style={{ padding: '0 12px' }}
+              style={{ padding: '0 12px', flexShrink: 0 }}
               onClick={(e) => openDownloadModal('attendance', e)}
               title="View download files for Windows, Mac, Android, iOS"
             >

@@ -164,7 +164,7 @@ export default function ContactView({ showToast }) {
             </div>
 
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <button className="btn" type="submit" style={{ flex: '1 1 auto' }}>
+              <button className="btn" type="submit" style={{ flex: '1 1 140px' }}>
                 {copied ? <Check /> : <Copy />}
                 <span>{copied ? 'Copied to Clipboard!' : 'Copy Enquiry Text'}</span>
               </button>
@@ -173,6 +173,7 @@ export default function ContactView({ showToast }) {
                 className="btn secondary"
                 type="button"
                 onClick={handleMailto}
+                style={{ flex: '1 1 140px' }}
                 title="Send via default email client"
               >
                 <Send style={{ width: '16px', height: '16px' }} />
