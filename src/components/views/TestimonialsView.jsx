@@ -22,12 +22,12 @@ const TESTIMONIALS_DATA = [
     role: 'Operations Head',
     company: 'Apex Engineering Solutions',
     location: 'Chennai, TN',
-    product: 'Attendance App',
+    product: 'Attendance Intelligence',
     rating: 5,
     quote: 'Biometric and contactless shift attendance integration transformed our shop-floor discipline. Daily muster rolls and overtime calculations are generated in a single click with zero manual data entry.',
     metric: '450+ operators tracked',
     metricDetail: '100% automated shift & payroll sync',
-    category: 'Attendance App'
+    category: 'Attendance Intelligence'
   },
   {
     id: 3,
@@ -61,12 +61,12 @@ const TESTIMONIALS_DATA = [
     role: 'HR & Admin Manager',
     company: 'Kavitha Automations',
     location: 'Hosur, TN',
-    product: 'Attendance App',
+    product: 'Attendance Intelligence',
     rating: 5,
     quote: 'The geofenced mobile check-in and multi-tier leave approval workflow simplified our administrative duties completely. Our shop floor workers and shift managers find the interface extremely intuitive.',
     metric: '15 hrs saved / month',
     metricDetail: '100% paperless leave & permission records',
-    category: 'Attendance App'
+    category: 'Attendance Intelligence'
   },
   {
     id: 6,
@@ -86,7 +86,7 @@ const TESTIMONIALS_DATA = [
 export default function TestimonialsView({ onNavigate }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'MetalCalc', 'ERP Suite', 'Attendance App'];
+  const categories = ['All', 'MetalCalc', 'ERP Suite', 'Attendance Intelligence'];
 
   const filteredTestimonials = selectedCategory === 'All'
     ? TESTIMONIALS_DATA

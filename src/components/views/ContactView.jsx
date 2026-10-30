@@ -142,7 +142,7 @@ export default function ContactView({ showToast }) {
                 onChange={handleChange}
               >
                 <option value="MetalCalc">MetalCalc (Weight & Costing)</option>
-                <option value="ARGUS Attendance">ARGUS Attendance App</option>
+                <option value="ARGUS Attendance">ARGUS Attendance Intelligence</option>
                 <option value="ARGUS ERP">ARGUS ERP Business Suite</option>
                 <option value="Support">Product Support & Maintenance</option>
                 <option value="Custom software">Custom Manufacturing Software</option>

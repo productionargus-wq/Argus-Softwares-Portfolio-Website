@@ -115,14 +115,14 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
           </div>
         </article>
 
-        {/* Attendance App Download Card */}
+        {/* Attendance Intelligence Download Card */}
         <article className="card">
           <div className="top">
             <div className="ic blue">
               <Users />
             </div>
             <div>
-              <h3>Attendance App</h3>
+              <h3>Attendance Intelligence</h3>
               <div className="sub">Smart attendance for productive teams.</div>
             </div>
             <div className="ver blue">v2.0.0</div>

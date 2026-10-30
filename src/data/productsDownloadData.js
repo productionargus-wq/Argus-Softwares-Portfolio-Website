@@ -91,7 +91,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
 
   attendance: {
     id: 'attendance',
-    title: 'ARGUS AI Attendance App',
+    title: 'ARGUS Attendance Intelligence',
     tagline: 'Workforce Shift Tracking, Geofencing & Biometric Sync',
     version: 'v2.0.0',
     releaseTag: 'v2.0.0',

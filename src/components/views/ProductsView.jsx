@@ -85,14 +85,14 @@ export default function ProductsView({ onNavigate, showToast }) {
           <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
 
-        {/* Attendance App Card */}
+        {/* Attendance Intelligence Card */}
         <article className="card clickable-card" onClick={() => onNavigate('attendance')}>
           <div className="top">
             <div className="ic blue">
               <Users />
             </div>
             <div>
-              <h3>Attendance App</h3>
+              <h3>Attendance Intelligence</h3>
               <div className="sub">Track workforce activity and reporting.</div>
             </div>
             <div className="ver blue">v2.0.0</div>
