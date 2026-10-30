@@ -29,29 +29,24 @@ export default function ProductsView({ onNavigate, showToast }) {
               <Calculator />
             </div>
             <div>
-              <h3>MetalCalc Suite</h3>
-              <div className="sub">Enterprise CNC quotation & CAD weight manual.</div>
+              <h3>MetalCalc</h3>
+              <div className="sub">Engineering calculations for manufacturing.</div>
             </div>
-            <div className="ver">v7.5.0</div>
+            <div className="ver">v1.0.1</div>
           </div>
           <div className="thumb">
             <div className="mock">
-              <b>MetalCalc v7.5.0</b>
-              8 Geometric Profiles<br />
-              Parametric Vector SVG<br />
-              Live Metals-API Ticker
+              <b>Metal Weight Calculator</b>
+              Round • Square • Flat<br />
+              Pipe • Hex • Angle<br />
+              Channel • I-Beam
             </div>
-            <div className="mock">
-              <b>Enterprise Modules</b>
-              Gemini AI Vision Estimator<br />
-              GST Multi-Item BOM Maker<br />
-              Resend Transactional Email
-            </div>
+            <div className="shape"></div>
           </div>
           <ul className="bullets">
-            <li><i>•</i><span>8 geometric profiles, CAD SVG & Metals-API live ticker</span></li>
-            <li><i>•</i><span>Gemini AI 2D drawing cycle time & tooling estimation</span></li>
-            <li><i>•</i><span>Commercial BOM, machining routings & statutory GST PDFs</span></li>
+            <li><i>•</i><span>Fast & accurate machine shop calculations</span></li>
+            <li><i>•</i><span>8 geometric profiles, CAD SVG & Metals-API</span></li>
+            <li><i>•</i><span>Desktop (.exe, .dmg) & Mobile (.apk, .ipa)</span></li>
           </ul>
 
           <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', alignItems: 'center' }}>
@@ -97,29 +92,29 @@ export default function ProductsView({ onNavigate, showToast }) {
               <Users />
             </div>
             <div>
-              <h3>AI Attendance</h3>
-              <div className="sub">Enterprise AI biometrics & operating manual.</div>
+              <h3>Attendance App</h3>
+              <div className="sub">Track workforce activity and reporting.</div>
             </div>
-            <div className="ver blue">v5.1</div>
+            <div className="ver blue">v2.0.0</div>
           </div>
           <div className="thumb">
             <div className="mock">
-              <b>ARGUS Attendance v5.1</b>
-              128D Deep Face Engine<br />
-              Haversine GPS Geofence<br />
-              Automated Payroll & OT
+              <b>Today's Attendance</b>
+              Present: 48<br />
+              Absent: 3<br />
+              On Leave: 2
             </div>
             <div className="mock">
-              <b>Enterprise Modules</b>
-              Live Camera Stream<br />
-              Leaves & Balance Sheet<br />
-              Field Worker Tracking
+              <b>Shift & Punch</b>
+              Face Biometrics: Active<br />
+              GPS Geofence: 150m<br />
+              Auto Payroll Sync
             </div>
           </div>
           <ul className="bullets">
-            <li><i>•</i><span>128D Face Biometrics & Anti-Spoofing Liveness</span></li>
-            <li><i>•</i><span>GPS Geofence Locking (100m–500m radius)</span></li>
-            <li><i>•</i><span>Automated Payroll, Disbursals & ReportLab Payslips</span></li>
+            <li><i>•</i><span>128D Face Biometrics & GPS Geofencing</span></li>
+            <li><i>•</i><span>Automated payroll, shifts & report generation</span></li>
+            <li><i>•</i><span>Desktop Console (.exe) & Mobile Punch (.apk)</span></li>
           </ul>
 
           <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', alignItems: 'center' }}>

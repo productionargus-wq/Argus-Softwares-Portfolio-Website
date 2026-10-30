@@ -73,39 +73,42 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
             <li><i>•</i><span>Offline standalone executable</span></li>
           </ul>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {/* Primary Unified Brand Action */}
             <a
               href="https://metalcalcquote.arguscnc.com/"
               className="btn"
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                background: 'linear-gradient(135deg, #ff6b35, #ea580c)',
-                color: '#ffffff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                fontWeight: 600
-              }}
               title="Open MetalCalc Live Web Application in a new tab"
             >
               <Globe style={{ width: '16px', height: '16px' }} />
               <span>Launch Live Web App</span>
-              <ExternalLink style={{ width: '14px', height: '14px', opacity: 0.9 }} />
+              <ExternalLink style={{ width: '14px', height: '14px', opacity: 0.85 }} />
             </a>
-            <a
-              href="https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/download/v1.0.1/MetalCalculator-Setup-Windows.exe"
-              className="btn secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-              download
-            >
-              <Download style={{ width: '15px', height: '15px' }} />
-              <span>Download Windows Installer (44.7 MB)</span>
-            </a>
-            <button className="btn secondary sm" onClick={() => onNavigate('products')}>
-              <span>View All Platforms (Mac, Android, iOS)</span>
-            </button>
+
+            {/* Compact Secondary 2-Column Row */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '8px' }}>
+              <a
+                href="https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/download/v1.0.1/MetalCalculator-Setup-Windows.exe"
+                className="btn secondary sm"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                style={{ justifyContent: 'center' }}
+                title="Download Windows Setup (.exe 44.7 MB)"
+              >
+                <Download style={{ width: '14px', height: '14px' }} />
+                <span>Windows (.exe 44.7 MB)</span>
+              </a>
+
+              <button
+                className="btn secondary sm"
+                onClick={() => onNavigate('products')}
+                title="View Mac, Android, iOS downloads"
+              >
+                <span>All Platforms</span>
+              </button>
+            </div>
           </div>
           <div className="small">
             Official MetalCalc v1.0.1 • Direct GitHub Release CDN
@@ -144,39 +147,42 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
             <li><i>•</i><span>Export-ready Excel & PDF generation</span></li>
           </ul>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {/* Primary Unified Brand Action */}
             <a
               href="https://argusattendanceintelligence.argussoftwares.com/"
               className="btn"
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                background: 'linear-gradient(135deg, #0284c7, #2563eb)',
-                color: '#ffffff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                fontWeight: 600
-              }}
               title="Open AI Attendance Live Web Application in a new tab"
             >
               <Globe style={{ width: '16px', height: '16px' }} />
               <span>Launch Live Web App</span>
-              <ExternalLink style={{ width: '14px', height: '14px', opacity: 0.9 }} />
+              <ExternalLink style={{ width: '14px', height: '14px', opacity: 0.85 }} />
             </a>
-            <a
-              href="https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Setup-Windows.exe"
-              className="btn secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-              download
-            >
-              <Download style={{ width: '15px', height: '15px' }} />
-              <span>Download Windows Installer (152.1 MB)</span>
-            </a>
-            <button className="btn secondary sm" onClick={() => onNavigate('products')}>
-              <span>View All Platforms (Mac, Android, iOS)</span>
-            </button>
+
+            {/* Compact Secondary 2-Column Row */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '8px' }}>
+              <a
+                href="https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Setup-Windows.exe"
+                className="btn secondary sm"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                style={{ justifyContent: 'center' }}
+                title="Download Windows Setup (.exe 152.1 MB)"
+              >
+                <Download style={{ width: '14px', height: '14px' }} />
+                <span>Windows (.exe 152.1 MB)</span>
+              </a>
+
+              <button
+                className="btn secondary sm"
+                onClick={() => onNavigate('products')}
+                title="View Mac, Android, iOS downloads"
+              >
+                <span>All Platforms</span>
+              </button>
+            </div>
           </div>
           <div className="small">
             Official AI Attendance v2.0.0 • Auto-sync with GitHub CDN
