@@ -7,6 +7,8 @@ export const PRODUCTS_DOWNLOAD_DATA = {
     releaseTag: 'v1.0.1',
     releaseDate: 'October 28, 2026',
     license: 'Commercial / Offline Standalone',
+    webAppUrl: 'https://metalcalcquote.arguscnc.com/',
+    webAppLabel: 'MetalCalc Cloud Suite',
     changelog: [
       'Official Windows Setup installer (MetalCalculator-Setup-Windows.exe)',
       'Windows Portable standalone executable (MetalCalculator-Standalone-Windows.exe)',
@@ -95,6 +97,8 @@ export const PRODUCTS_DOWNLOAD_DATA = {
     releaseTag: 'v2.0.0',
     releaseDate: 'October 28, 2026',
     license: 'Subscription / Enterprise Biometric',
+    webAppUrl: 'https://argusattendanceintelligence.argussoftwares.com/',
+    webAppLabel: 'AI Attendance Cloud Intelligence',
     changelog: [
       'Official Windows Setup installer (ArgusAttendance-Setup-Windows.exe)',
       'Windows Portable standalone executable (ArgusAttendance-Standalone-Windows.exe)',

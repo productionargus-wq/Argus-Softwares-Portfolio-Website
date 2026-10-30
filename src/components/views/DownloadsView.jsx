@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Download, Calculator, Users, Database, Upload, ArrowRight, Shield } from 'lucide-react';
+import { Download, Calculator, Users, Database, Upload, ArrowRight, Shield, Globe, ExternalLink } from 'lucide-react';
 import HeroSection from './HeroSection';
 
 export default function DownloadsView({ onNavigate, uploads, onUpload, onDownload, showToast }) {
@@ -74,13 +74,33 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
           </ul>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <a
-              href="https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/download/v1.0.1/MetalCalculator-Setup-Windows.exe"
+              href="https://metalcalcquote.arguscnc.com/"
               className="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'linear-gradient(135deg, #ff6b35, #ea580c)',
+                color: '#ffffff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                fontWeight: 600
+              }}
+              title="Open MetalCalc Live Web Application in a new tab"
+            >
+              <Globe style={{ width: '16px', height: '16px' }} />
+              <span>Launch Live Web App</span>
+              <ExternalLink style={{ width: '14px', height: '14px', opacity: 0.9 }} />
+            </a>
+            <a
+              href="https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/download/v1.0.1/MetalCalculator-Setup-Windows.exe"
+              className="btn secondary"
               target="_blank"
               rel="noopener noreferrer"
               download
             >
-              <Download />
+              <Download style={{ width: '15px', height: '15px' }} />
               <span>Download Windows Installer (44.7 MB)</span>
             </a>
             <button className="btn secondary sm" onClick={() => onNavigate('products')}>
@@ -125,13 +145,33 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
           </ul>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <a
-              href="https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Setup-Windows.exe"
+              href="https://argusattendanceintelligence.argussoftwares.com/"
               className="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'linear-gradient(135deg, #0284c7, #2563eb)',
+                color: '#ffffff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                fontWeight: 600
+              }}
+              title="Open AI Attendance Live Web Application in a new tab"
+            >
+              <Globe style={{ width: '16px', height: '16px' }} />
+              <span>Launch Live Web App</span>
+              <ExternalLink style={{ width: '14px', height: '14px', opacity: 0.9 }} />
+            </a>
+            <a
+              href="https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Setup-Windows.exe"
+              className="btn secondary"
               target="_blank"
               rel="noopener noreferrer"
               download
             >
-              <Download />
+              <Download style={{ width: '15px', height: '15px' }} />
               <span>Download Windows Installer (152.1 MB)</span>
             </a>
             <button className="btn secondary sm" onClick={() => onNavigate('products')}>

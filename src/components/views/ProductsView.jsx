@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calculator, Users, Database, Download, ExternalLink } from 'lucide-react';
+import { Calculator, Users, Database, Download, ExternalLink, Globe } from 'lucide-react';
 import HeroSection from './HeroSection';
 import ProductDownloadModal from './ProductDownloadModal';
 
@@ -54,7 +54,7 @@ export default function ProductsView({ onNavigate, showToast }) {
             <li><i>•</i><span>Commercial BOM, machining routings & statutory GST PDFs</span></li>
           </ul>
 
-          <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
+          <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', alignItems: 'center' }}>
             <button
               className="btn"
               style={{ flex: 1, background: 'linear-gradient(180deg, var(--orange), #d94800)' }}
@@ -65,11 +65,22 @@ export default function ProductsView({ onNavigate, showToast }) {
               title="Explore full interactive enterprise manual & operating guide"
             >
               <ExternalLink style={{ width: '15px', height: '15px' }} />
-              <span>Explore Enterprise Guide</span>
+              <span>Explore Guide</span>
             </button>
+            <a
+              href="https://metalcalcquote.arguscnc.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn secondary"
+              style={{ padding: '0 10px', flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+              onClick={(e) => e.stopPropagation()}
+              title="Launch MetalCalc Live Online Web App in a new tab"
+            >
+              <Globe style={{ width: '16px', height: '16px', color: 'var(--orange)' }} />
+            </a>
             <button
               className="btn secondary"
-              style={{ padding: '0 12px', flexShrink: 0 }}
+              style={{ padding: '0 10px', flexShrink: 0 }}
               onClick={(e) => openDownloadModal('metalcalc', e)}
               title="View download files for Windows, Mac, Android, iOS"
             >
@@ -111,7 +122,7 @@ export default function ProductsView({ onNavigate, showToast }) {
             <li><i>•</i><span>Automated Payroll, Disbursals & ReportLab Payslips</span></li>
           </ul>
 
-          <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
+          <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', alignItems: 'center' }}>
             <button
               className="btn"
               style={{ flex: 1, background: 'linear-gradient(180deg, var(--green), #00936b)' }}
@@ -122,11 +133,22 @@ export default function ProductsView({ onNavigate, showToast }) {
               title="Explore full interactive enterprise manual & operating guide"
             >
               <ExternalLink style={{ width: '15px', height: '15px' }} />
-              <span>Explore Enterprise Guide</span>
+              <span>Explore Guide</span>
             </button>
+            <a
+              href="https://argusattendanceintelligence.argussoftwares.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn secondary"
+              style={{ padding: '0 10px', flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+              onClick={(e) => e.stopPropagation()}
+              title="Launch AI Attendance Live Online Web App in a new tab"
+            >
+              <Globe style={{ width: '16px', height: '16px', color: 'var(--green)' }} />
+            </a>
             <button
               className="btn secondary"
-              style={{ padding: '0 12px', flexShrink: 0 }}
+              style={{ padding: '0 10px', flexShrink: 0 }}
               onClick={(e) => openDownloadModal('attendance', e)}
               title="View download files for Windows, Mac, Android, iOS"
             >

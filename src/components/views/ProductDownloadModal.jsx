@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Download, Monitor, Smartphone, Apple, Terminal, X, Check, Copy, ShieldCheck, ArrowLeft, FileCode, CheckCircle2, ExternalLink, RefreshCw } from 'lucide-react';
+import { Download, Monitor, Smartphone, Apple, Terminal, X, Check, Copy, ShieldCheck, ArrowLeft, FileCode, CheckCircle2, ExternalLink, RefreshCw, Globe, Sparkles } from 'lucide-react';
 import { PRODUCTS_DOWNLOAD_DATA } from '../../data/productsDownloadData';
 
 const platformIconMap = {
@@ -254,7 +254,34 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            {productData.webAppUrl && (
+              <a
+                href={productData.webAppUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{
+                  background: 'linear-gradient(135deg, var(--orange), #d94800)',
+                  color: '#ffffff',
+                  fontSize: '12px',
+                  padding: '6px 12px',
+                  height: '32px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  borderRadius: '6px',
+                  textDecoration: 'none',
+                  fontWeight: 600,
+                  boxShadow: '0 2px 6px rgba(234, 88, 12, 0.25)'
+                }}
+                title={`Launch ${productData.title} Live Web Application in a new tab`}
+              >
+                <Globe style={{ width: '14px', height: '14px' }} />
+                <span>Launch Web App</span>
+                <ExternalLink style={{ width: '12px', height: '12px', opacity: 0.85 }} />
+              </a>
+            )}
             {releaseUrl && (
               <a
                 href={releaseUrl}
@@ -275,6 +302,72 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
 
         {/* Modal Body */}
         <div className="modal-body">
+          {/* Cloud Web App Banner (Zero-Install Option) */}
+          {productData.webAppUrl && (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '12px',
+                background: 'linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(37, 99, 235, 0.08))',
+                border: '1px solid rgba(255, 107, 53, 0.2)',
+                borderRadius: '10px',
+                padding: '12px 16px',
+                marginBottom: '16px'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div
+                  style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '8px',
+                    background: 'linear-gradient(135deg, var(--orange), #ea580c)',
+                    color: '#ffffff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}
+                >
+                  <Globe style={{ width: '20px', height: '20px' }} />
+                </div>
+                <div>
+                  <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#0f172a' }}>
+                    Prefer using online in your browser?
+                  </div>
+                  <div style={{ fontSize: '12px', color: '#64748b' }}>
+                    No setup or downloads required. Launch the live production cloud edition of {productData.title} instantly.
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href={productData.webAppUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{
+                  background: 'linear-gradient(135deg, #0f172a, #1e293b)',
+                  color: '#ffffff',
+                  fontSize: '12.5px',
+                  fontWeight: 600,
+                  padding: '8px 14px',
+                  borderRadius: '7px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  textDecoration: 'none'
+                }}
+              >
+                <span>Launch Cloud Web App</span>
+                <ExternalLink style={{ width: '13px', height: '13px' }} />
+              </a>
+            </div>
+          )}
+
           {/* Platform Selector Tabs */}
           <div className="platform-tabs" role="tablist">
             {platformKeys.map((key) => {
