@@ -1,9 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Download, Calculator, Users, Database, Upload, ArrowRight, Shield, Globe, ExternalLink } from 'lucide-react';
 import HeroSection from './HeroSection';
+import ProductDownloadModal from './ProductDownloadModal';
 
 export default function DownloadsView({ onNavigate, uploads, onUpload, onDownload, showToast }) {
+  const [activeModalProduct, setActiveModalProduct] = useState(null);
   const fileInputRef = useRef(null);
+
+  const openDownloadModal = (productKey, e) => {
+    e?.stopPropagation();
+    setActiveModalProduct(productKey);
+  };
 
   const handleFileChange = (e, productKey = 'metalcalc') => {
     const file = e.target.files?.[0];
@@ -47,157 +54,123 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
 
       <div className="grid3">
         {/* MetalCalc Download Card */}
-        <article className="card">
+        <article className="card clickable-card" onClick={() => onNavigate('metalcalc')}>
           <div className="top">
             <div className="ic">
               <Calculator />
             </div>
             <div>
               <h3>MetalCalc</h3>
-              <div className="sub">Precision calculations for modern manufacturing.</div>
+              <div className="sub">Engineering calculations for manufacturing.</div>
             </div>
             <div className="ver">v1.0.1</div>
           </div>
           <div className="thumb">
             <div className="mock">
               <b>Metal Weight Calculator</b>
-              Pipe • Sheet • Angle<br />
-              Channel • I-Beam<br />
-              Custom Section
+              Round • Square • Flat<br />
+              Pipe • Hex • Angle<br />
+              Channel • I-Beam
             </div>
             <div className="shape"></div>
           </div>
           <ul className="bullets">
             <li><i>•</i><span>Fast & accurate machine shop calculations</span></li>
-            <li><i>•</i><span>Windows 10 / 11 64-bit native application</span></li>
-            <li><i>•</i><span>Offline standalone executable</span></li>
+            <li><i>•</i><span>8 geometric profiles, CAD SVG & Metals-API</span></li>
+            <li><i>•</i><span>Desktop (.exe, .dmg) & Mobile (.apk, .ipa)</span></li>
           </ul>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {/* Primary Unified Brand Action */}
+
+          <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', alignItems: 'center' }}>
+            <button
+              className="btn"
+              style={{ flex: 1, background: 'linear-gradient(180deg, var(--orange), #d94800)' }}
+              onClick={(e) => openDownloadModal('metalcalc', e)}
+              title="Download MetalCalc for Windows, macOS, Android, iOS"
+            >
+              <Download style={{ width: '16px', height: '16px' }} />
+              <span>Download</span>
+            </button>
             <a
               href="https://metalcalcquote.arguscnc.com/"
-              className="btn"
               target="_blank"
               rel="noopener noreferrer"
-              title="Open MetalCalc Live Web Application in a new tab"
+              className="btn secondary"
+              style={{ padding: '0 10px', flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+              onClick={(e) => e.stopPropagation()}
+              title="Launch MetalCalc Live Online Web App in a new tab"
             >
-              <Globe style={{ width: '16px', height: '16px' }} />
-              <span>Launch Live Web App</span>
-              <ExternalLink style={{ width: '14px', height: '14px', opacity: 0.85 }} />
+              <Globe style={{ width: '16px', height: '16px', color: 'var(--orange)' }} />
             </a>
-
-            {/* Compact Secondary 2-Column Row */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '8px' }}>
-              <a
-                href="https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/download/v1.0.1/MetalCalculator-Setup-Windows.exe"
-                className="btn secondary sm"
-                target="_blank"
-                rel="noopener noreferrer"
-                download
-                style={{ justifyContent: 'center' }}
-                title="Download installer suitable for Windows"
-              >
-                <Download style={{ width: '14px', height: '14px' }} />
-                <span>Suitable for Windows</span>
-              </a>
-
-              <button
-                className="btn secondary sm"
-                onClick={() => onNavigate('products')}
-                title="View Mac, Android, iOS downloads"
-              >
-                <span>All Platforms</span>
-              </button>
-            </div>
           </div>
-          <div className="small">
-            Official MetalCalc v1.0.1 • Direct GitHub Release CDN
-          </div>
+          <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
 
         {/* Attendance Intelligence Download Card */}
-        <article className="card">
+        <article className="card clickable-card" onClick={() => onNavigate('attendance')}>
           <div className="top">
             <div className="ic blue">
               <Users />
             </div>
             <div>
               <h3>Attendance Intelligence</h3>
-              <div className="sub">Smart attendance for productive teams.</div>
+              <div className="sub">Track workforce activity and reporting.</div>
             </div>
             <div className="ver blue">v2.0.0</div>
           </div>
           <div className="thumb">
             <div className="mock">
               <b>Today's Attendance</b>
-              Present 48<br />
-              Absent 3<br />
-              On Leave 2
+              Present: 48<br />
+              Absent: 3<br />
+              On Leave: 2
             </div>
             <div className="mock">
-              <b>Company Login</b>
-              Dashboard<br />
-              Attendance<br />
-              Reports
+              <b>Shift & Punch</b>
+              Face Biometrics: Active<br />
+              GPS Geofence: 150m<br />
+              Auto Payroll Sync
             </div>
           </div>
           <ul className="bullets">
-            <li><i>•</i><span>Employee biometric & check-in sync</span></li>
-            <li><i>•</i><span>Shift & overtime automated calculations</span></li>
-            <li><i>•</i><span>Export-ready Excel & PDF generation</span></li>
+            <li><i>•</i><span>128D Face Biometrics & GPS Geofencing</span></li>
+            <li><i>•</i><span>Automated payroll, shifts & report generation</span></li>
+            <li><i>•</i><span>Desktop Console (.exe) & Mobile Punch (.apk)</span></li>
           </ul>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {/* Primary Unified Brand Action */}
+
+          <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', alignItems: 'center' }}>
+            <button
+              className="btn"
+              style={{ flex: 1, background: 'linear-gradient(180deg, var(--green), #00936b)' }}
+              onClick={(e) => openDownloadModal('attendance', e)}
+              title="Download Attendance Intelligence for Windows, macOS, Android, iOS"
+            >
+              <Download style={{ width: '16px', height: '16px' }} />
+              <span>Download</span>
+            </button>
             <a
               href="https://argusattendanceintelligence.argussoftwares.com/"
-              className="btn"
               target="_blank"
               rel="noopener noreferrer"
-              title="Open AI Attendance Live Web Application in a new tab"
+              className="btn secondary"
+              style={{ padding: '0 10px', flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+              onClick={(e) => e.stopPropagation()}
+              title="Launch AI Attendance Live Online Web App in a new tab"
             >
-              <Globe style={{ width: '16px', height: '16px' }} />
-              <span>Launch Live Web App</span>
-              <ExternalLink style={{ width: '14px', height: '14px', opacity: 0.85 }} />
+              <Globe style={{ width: '16px', height: '16px', color: 'var(--green)' }} />
             </a>
-
-            {/* Compact Secondary 2-Column Row */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '8px' }}>
-              <a
-                href="https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Setup-Windows.exe"
-                className="btn secondary sm"
-                target="_blank"
-                rel="noopener noreferrer"
-                download
-                style={{ justifyContent: 'center' }}
-                title="Download installer suitable for Windows"
-              >
-                <Download style={{ width: '14px', height: '14px' }} />
-                <span>Suitable for Windows</span>
-              </a>
-
-              <button
-                className="btn secondary sm"
-                onClick={() => onNavigate('products')}
-                title="View Mac, Android, iOS downloads"
-              >
-                <span>All Platforms</span>
-              </button>
-            </div>
           </div>
-          <div className="small">
-            Official AI Attendance v2.0.0 • Auto-sync with GitHub CDN
-          </div>
+          <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
 
         {/* ERP App Download Card */}
-        <article className="card">
+        <article className="card clickable-card" onClick={(e) => openDownloadModal('erp', e)}>
           <div className="top">
             <div className="ic purple">
               <Database />
             </div>
             <div>
               <h3>ERP App</h3>
-              <div className="sub">Manage your entire business in one place.</div>
+              <div className="sub">Business operations in one place.</div>
             </div>
             <div className="ver purple">v2.4.3</div>
           </div>
@@ -221,25 +194,33 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
           </div>
           <ul className="bullets">
             <li><i>•</i><span>Inventory & warehouse live stock control</span></li>
-            <li><i>•</i><span>Purchase, GRN and automated billing flow</span></li>
-            <li><i>•</i><span>Multi-tier permission management</span></li>
+            <li><i>•</i><span>Server & Workstation install (.exe, .msi)</span></li>
+            <li><i>•</i><span>Shop-Floor Barcode Scanner (.apk, .ipa)</span></li>
           </ul>
-          {uploads['erp'] ? (
-            <button className="btn" onClick={() => onDownload('erp')}>
-              <Download />
-              <span>Download ({uploads['erp'].name})</span>
+
+          <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
+            <button
+              className="btn"
+              style={{ flex: 1, background: 'linear-gradient(180deg, var(--purple), #5e1cb0)' }}
+              onClick={(e) => openDownloadModal('erp', e)}
+              title="View download files for Windows, Mac, Android, iOS"
+            >
+              <Download style={{ width: '16px', height: '16px' }} />
+              <span>Download</span>
             </button>
-          ) : (
-            <button className="btn" onClick={() => triggerUpload('erp')}>
-              <Upload />
-              <span>Load Local Installer</span>
+            <button
+              className="btn secondary"
+              style={{ padding: '0 12px' }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onNavigate('erp');
+              }}
+              title="Explore live ERP operations dashboard"
+            >
+              <ExternalLink style={{ width: '16px', height: '16px' }} />
             </button>
-          )}
-          <div className="small">
-            {uploads['erp']
-              ? `Loaded: ${(uploads['erp'].size / 1024 / 1024).toFixed(1)} MB installer ready`
-              : 'Add a local EXE / MSI / ZIP in the browser preview'}
           </div>
+          <div className="small">Click to view .exe, .dmg, .apk packages</div>
         </article>
       </div>
 
@@ -300,6 +281,15 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
           </div>
         </div>
       </div>
+
+      {/* Product Downloads Modal */}
+      {activeModalProduct && (
+        <ProductDownloadModal
+          productKey={activeModalProduct}
+          onClose={() => setActiveModalProduct(null)}
+          showToast={showToast}
+        />
+      )}
     </>
   );
 }
