@@ -785,6 +785,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .stat.blue b { color: var(--blue); }
 .stat.purple b { color: var(--purple); }
 .stat.orange b { color: var(--orange); }
+.stat.teal b { color: #00a87a; }
 
 /* Bullets */
 .bullets {

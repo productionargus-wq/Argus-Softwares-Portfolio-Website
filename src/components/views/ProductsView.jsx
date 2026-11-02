@@ -86,18 +86,22 @@ export default function ProductsView({ onNavigate, showToast }) {
             </div>
             <div className="ver blue">v2.0.0</div>
           </div>
-          <div className="thumb">
-            <div className="mock">
-              <b>Today's Attendance</b>
-              Present: 48<br />
-              Absent: 3<br />
-              On Leave: 2
+          <div className="stats">
+            <div className="stat green">
+              <b>48</b>
+              Present Today
             </div>
-            <div className="mock">
-              <b>Shift & Punch</b>
-              Face Biometrics: Active<br />
-              GPS Geofence: 150m<br />
-              Auto Payroll Sync
+            <div className="stat orange">
+              <b>3</b>
+              Absent Workers
+            </div>
+            <div className="stat blue">
+              <b>2</b>
+              On Leave
+            </div>
+            <div className="stat teal">
+              <b>100%</b>
+              Biometric & GPS Sync
             </div>
           </div>
           <ul className="bullets">
