@@ -6,7 +6,7 @@ export const ATTENDANCE_MANUAL_METADATA = {
   targetAudience: 'Corporate HR Directors, System Administrators, Operations Executives',
   corePlatform: 'Flask / Python 3.12, MongoDB Atlas, Deep Learning Face Engine, Leaflet GPS',
   securityCompliance: 'PBKDF2/SHA-256 Hashing, GPS Radius Locking, Anti-Spoofing Liveness AI',
-  publisher: 'ARGUS TECHNOLOGIES (Coimbatore, Tamil Nadu, India)',
+  publisher: 'ARGUS CNC™ (Coimbatore, Tamil Nadu, India)',
   releaseDate: 'October 2026',
   heroImage: '/attendance-manual/fig0_dashboard.png',
   heroCaption: 'Figure 0: ARGUS Attendance Executive Operations Dashboard',
@@ -480,11 +480,11 @@ export const MANUAL_SECTIONS = [
       }
     ],
     contactInfo: {
-      division: 'ARGUS TECHNOLOGIES — ADVANCED AUTOMATION & SOFTWARE DIVISION',
+      division: 'ARGUS CNC™ — ADVANCED AUTOMATION & SOFTWARE DIVISION',
       location: 'Headquarters: Coimbatore, Tamil Nadu, India',
       web: 'www.argussoftwares.com',
       email: 'technologiesargus@gmail.com',
-      copyright: '© 2026 ARGUS Technologies. All Rights Reserved. This technical feature guide is proprietary documentation.'
+      copyright: '© 2026 ARGUS CNC™. All Rights Reserved. This technical feature guide is proprietary documentation.'
     }
   }
 ];
