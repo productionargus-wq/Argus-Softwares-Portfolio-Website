@@ -146,7 +146,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
 
   erp: {
     id: 'erp',
-    title: 'ARGUS ERP Business Suite',
+    title: 'ARGUS Business Intelligence',
     tagline: 'End-to-End Plant Operations, Stock, Purchases & Invoicing',
     version: 'v2.4.3',
     releaseTag: 'v2.4.3',

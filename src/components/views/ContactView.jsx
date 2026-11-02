@@ -73,7 +73,7 @@ export default function ContactView({ showToast }) {
             </div>
             <div>
               <b>Product enquiries</b>
-              <small>Discuss MetalCalc, Attendance, ERP or tailor-made machine shop software requirements.</small>
+              <small>Discuss MetalCalc, Attendance Intelligence, Business Intelligence or tailor-made machine shop software requirements.</small>
             </div>
           </div>
 
@@ -143,7 +143,7 @@ export default function ContactView({ showToast }) {
               >
                 <option value="MetalCalc">MetalCalc (Weight & Costing)</option>
                 <option value="ARGUS Attendance">ARGUS Attendance Intelligence</option>
-                <option value="ARGUS ERP">ARGUS ERP Business Suite</option>
+                <option value="ARGUS Business Intelligence">ARGUS Business Intelligence</option>
                 <option value="Support">Product Support & Maintenance</option>
                 <option value="Custom software">Custom Manufacturing Software</option>
                 <option value="Other enquiry">General Commercial Enquiry</option>

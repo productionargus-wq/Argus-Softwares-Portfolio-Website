@@ -44,8 +44,8 @@ export default function ErpView({ onNavigate }) {
     <>
       <HeroSection
         eyebrow="Business Management"
-        line1="ARGUS"
-        line2="ERP"
+        line1="Business"
+        line2="Intelligence"
         desc="A central operational view for inventory, purchases, sales and record-based business workflows."
         mainIcon="Database"
       />
@@ -56,7 +56,7 @@ export default function ErpView({ onNavigate }) {
           <div>
             <h3 style={{ margin: 0, fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <TrendingUp style={{ width: '20px', height: '20px', color: 'var(--purple)' }} />
-              ARGUS ERP Operational Control Dashboard
+              ARGUS Business Intelligence Operational Control Dashboard
             </h3>
             <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#64748b' }}>
               Connected plant workflow preview across shop-floor operations.
@@ -162,10 +162,10 @@ export default function ErpView({ onNavigate }) {
             </div>
             <h4>Implementation enquiry</h4>
           </div>
-          <p>Schedule an on-site or remote ERP requirement analysis and custom module deployment review.</p>
+          <p>Schedule an on-site or remote Business Intelligence requirement analysis and custom module deployment review.</p>
           <div className="cta">
             <button className="btn secondary sm" onClick={() => onNavigate('contact')}>
-              Ask about ERP
+              Ask about Business Intelligence
             </button>
           </div>
         </div>

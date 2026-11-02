@@ -28,7 +28,7 @@ export default function SolutionsView({ onNavigate }) {
                 </div>
                 <h4>Software showcase</h4>
               </div>
-              <p>Present apps like MetalCalc, Attendance and ERP clearly in clean modular screens.</p>
+              <p>Present apps like MetalCalc, Attendance Intelligence and Business Intelligence clearly in clean modular screens.</p>
             </div>
 
             <div className="tile">

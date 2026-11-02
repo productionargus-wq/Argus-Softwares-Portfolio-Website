@@ -131,14 +131,14 @@ export default function ProductsView({ onNavigate, showToast }) {
           <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
 
-        {/* ERP App Card */}
+        {/* Business Intelligence Card */}
         <article className="card clickable-card" onClick={(e) => openDownloadModal('erp', e)}>
           <div className="top">
             <div className="ic purple">
               <Database />
             </div>
             <div>
-              <h3>ERP App</h3>
+              <h3>Business Intelligence</h3>
               <div className="sub">Business operations in one place.</div>
             </div>
             <div className="ver purple">v2.4.3</div>
@@ -184,7 +184,7 @@ export default function ProductsView({ onNavigate, showToast }) {
                 e.stopPropagation();
                 onNavigate('erp');
               }}
-              title="Explore live ERP operations dashboard"
+              title="Explore live Business Intelligence operations dashboard"
             >
               <ExternalLink style={{ width: '16px', height: '16px' }} />
             </button>

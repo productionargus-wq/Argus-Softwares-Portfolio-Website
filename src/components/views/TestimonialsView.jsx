@@ -35,12 +35,12 @@ const TESTIMONIALS_DATA = [
     role: 'Plant General Manager',
     company: 'Titan Industrial Components',
     location: 'Pune, MH',
-    product: 'ERP Suite',
+    product: 'Business Intelligence',
     rating: 5,
-    quote: 'Complete inventory visibility across raw steel bars, machine shop work-in-progress, and finished dispatch. ARGUS ERP brought true operational transparency across our three plant locations.',
+    quote: 'Complete inventory visibility across raw steel bars, machine shop work-in-progress, and finished dispatch. ARGUS Business Intelligence brought true operational transparency across our three plant locations.',
     metric: '₹2.4Cr inventory managed',
     metricDetail: 'Real-time multi-branch stock reconciliation',
-    category: 'ERP Suite'
+    category: 'Business Intelligence'
   },
   {
     id: 4,
@@ -74,19 +74,19 @@ const TESTIMONIALS_DATA = [
     role: 'Chief Technical Officer',
     company: 'Delta Fabtech Engineering',
     location: 'Ahmedabad, GJ',
-    product: 'ERP Suite',
+    product: 'Business Intelligence',
     rating: 5,
     quote: 'The clean single-screen UI feels like a modern industrial control room. It eliminated paperwork between our stores, procurement, and billing departments with seamless traceability.',
     metric: '38% operational turnaround',
     metricDetail: 'Unified workflow from PO to tax invoicing',
-    category: 'ERP Suite'
+    category: 'Business Intelligence'
   }
 ];
 
 export default function TestimonialsView({ onNavigate }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'MetalCalc', 'ERP Suite', 'Attendance Intelligence'];
+  const categories = ['All', 'MetalCalc', 'Business Intelligence', 'Attendance Intelligence'];
 
   const filteredTestimonials = selectedCategory === 'All'
     ? TESTIMONIALS_DATA
@@ -186,8 +186,8 @@ export default function TestimonialsView({ onNavigate }) {
                 className="ver"
                 style={{
                   fontSize: '11px',
-                  background: item.category === 'MetalCalc' ? 'var(--orange-light)' : item.category === 'ERP Suite' ? 'var(--purple-light)' : 'var(--blue-light)',
-                  color: item.category === 'MetalCalc' ? 'var(--orange)' : item.category === 'ERP Suite' ? 'var(--purple)' : 'var(--blue)',
+                  background: item.category === 'MetalCalc' ? 'var(--orange-light)' : item.category === 'Business Intelligence' ? 'var(--purple-light)' : 'var(--blue-light)',
+                  color: item.category === 'MetalCalc' ? 'var(--orange)' : item.category === 'Business Intelligence' ? 'var(--purple)' : 'var(--blue)',
                   borderColor: 'transparent'
                 }}
               >

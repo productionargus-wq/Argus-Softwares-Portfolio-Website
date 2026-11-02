@@ -162,14 +162,14 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
           <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
 
-        {/* ERP App Download Card */}
+        {/* Business Intelligence Download Card */}
         <article className="card clickable-card" onClick={(e) => openDownloadModal('erp', e)}>
           <div className="top">
             <div className="ic purple">
               <Database />
             </div>
             <div>
-              <h3>ERP App</h3>
+              <h3>Business Intelligence</h3>
               <div className="sub">Business operations in one place.</div>
             </div>
             <div className="ver purple">v2.4.3</div>
@@ -215,7 +215,7 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
                 e.stopPropagation();
                 onNavigate('erp');
               }}
-              title="Explore live ERP operations dashboard"
+              title="Explore live Business Intelligence operations dashboard"
             >
               <ExternalLink style={{ width: '16px', height: '16px' }} />
             </button>
@@ -234,7 +234,7 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
           <div className="upload-grid">
             <div className="upload-drop">
               <b>EXE, MSI or ZIP file</b>
-              <p>Choose a local setup file from your computer and connect it to MetalCalc, Attendance or ERP in the preview.</p>
+              <p>Choose a local setup file from your computer and connect it to MetalCalc, Attendance or Business Intelligence in the preview.</p>
               <button className="btn secondary" onClick={() => triggerUpload('metalcalc')}>
                 <Upload style={{ width: '16px', height: '16px' }} />
                 <span>Choose installer file</span>

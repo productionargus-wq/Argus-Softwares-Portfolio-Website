@@ -48,7 +48,7 @@ export default function NavigationRail({ side = 'left', activeSection, onSelectS
               <span className="icon">
                 {iconMap[section.icon]}
               </span>
-              <span className="mini">{section.name}</span>
+              <span className="mini">{section.railLabel || section.name}</span>
             </button>
           );
         })}
