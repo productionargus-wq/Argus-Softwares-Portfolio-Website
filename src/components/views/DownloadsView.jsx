@@ -95,10 +95,10 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
                 rel="noopener noreferrer"
                 download
                 style={{ justifyContent: 'center' }}
-                title="Download Windows Setup (.exe 44.7 MB)"
+                title="Download installer suitable for Windows"
               >
                 <Download style={{ width: '14px', height: '14px' }} />
-                <span>Windows (.exe 44.7 MB)</span>
+                <span>Suitable for Windows</span>
               </a>
 
               <button
@@ -169,10 +169,10 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
                 rel="noopener noreferrer"
                 download
                 style={{ justifyContent: 'center' }}
-                title="Download Windows Setup (.exe 152.1 MB)"
+                title="Download installer suitable for Windows"
               >
                 <Download style={{ width: '14px', height: '14px' }} />
-                <span>Windows (.exe 152.1 MB)</span>
+                <span>Suitable for Windows</span>
               </a>
 
               <button

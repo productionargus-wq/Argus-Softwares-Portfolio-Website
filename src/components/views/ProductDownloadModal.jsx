@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Download, Monitor, Smartphone, Apple, Terminal, X, Check, Copy, ShieldCheck, ArrowLeft, FileCode, CheckCircle2, ExternalLink, RefreshCw, Globe, Sparkles } from 'lucide-react';
+import { Download, Monitor, Smartphone, Apple, Terminal, X, ArrowLeft, FileCode, CheckCircle2, ExternalLink, RefreshCw, Globe, Sparkles, ShieldCheck } from 'lucide-react';
 import { PRODUCTS_DOWNLOAD_DATA } from '../../data/productsDownloadData';
 
 const platformIconMap = {
@@ -28,7 +28,6 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
 
   const platformKeys = Object.keys(productData.platforms);
   const [selectedPlatform, setSelectedPlatform] = useState(platformKeys[0] || 'windows');
-  const [copiedHash, setCopiedHash] = useState(false);
 
   // Auto-fetch latest release from GitHub API dynamically
   useEffect(() => {
@@ -176,19 +175,6 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
       document.body.style.overflow = prevOverflow;
     };
   }, [onClose]);
-
-  const handleCopyHash = async (hash) => {
-    try {
-      if (navigator.clipboard) {
-        await navigator.clipboard.writeText(hash);
-      }
-      setCopiedHash(true);
-      showToast?.('SHA-256 checksum copied to clipboard');
-      setTimeout(() => setCopiedHash(false), 2500);
-    } catch {
-      showToast?.('Checksum copied');
-    }
-  };
 
   const handleTriggerDownload = (fileName, customUrl) => {
     const downloadUrl = customUrl || currentPkg?.downloadUrl;
@@ -438,7 +424,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                   onClick={() => handleTriggerDownload(currentPkg.fileName)}
                 >
                   <Download style={{ width: '18px', height: '18px' }} />
-                  <span>Download {currentPkg.name} Package</span>
+                  <span>Download for {currentPkg.name}</span>
                 </button>
                 {currentPkg.downloadUrl && (
                   <a
@@ -471,23 +457,6 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 </button>
               </div>
             )}
-
-            {/* Checksum SHA-256 Bar */}
-            <div className="checksum-row">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', color: '#64748b' }}>
-                <ShieldCheck style={{ width: '15px', height: '15px', color: 'var(--green)' }} />
-                <span>SHA-256 Checksum:</span>
-                <code className="checksum-code">{currentPkg.sha256}</code>
-              </div>
-              <button
-                className="copy-hash-btn"
-                onClick={() => handleCopyHash(currentPkg.sha256)}
-                title="Copy SHA-256 checksum"
-              >
-                {copiedHash ? <Check style={{ width: '13px', height: '13px', color: 'var(--green)' }} /> : <Copy style={{ width: '13px', height: '13px' }} />}
-                <span>{copiedHash ? 'Copied' : 'Copy Hash'}</span>
-              </button>
-            </div>
           </div>
 
           {/* Changelog & Quick Install Guide */}
