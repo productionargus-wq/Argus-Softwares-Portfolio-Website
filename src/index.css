@@ -1882,6 +1882,95 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
   font-weight: 600;
 }
 
+.os-download-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.os-download-card {
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.os-download-card:hover {
+  border-color: rgba(255, 107, 53, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.08);
+  transform: translateY(-1px);
+}
+
+.os-card-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  flex: 1;
+}
+
+.os-card-details {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.os-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.os-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.os-size-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+}
+
+.os-filename {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  word-break: break-all;
+}
+
+.os-card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.os-direct-link {
+  font-size: 11px;
+  color: #64748b;
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.os-direct-link:hover {
+  color: var(--orange);
+}
+
 .download-showcase-card {
   border-radius: 20px;
   border: 1px solid var(--line);
@@ -2102,6 +2191,23 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
     font-size: 12px;
     white-space: nowrap;
     flex-shrink: 0;
+  }
+  .os-download-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px;
+    gap: 14px;
+  }
+  .os-card-actions {
+    align-items: stretch;
+    width: 100%;
+  }
+  .os-card-actions .download-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .os-direct-link {
+    text-align: center;
   }
   .download-showcase-card {
     padding: 14px;

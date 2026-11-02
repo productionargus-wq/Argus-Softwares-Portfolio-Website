@@ -53,14 +53,11 @@ export default function ProductsView({ onNavigate, showToast }) {
             <button
               className="btn"
               style={{ flex: 1, background: 'linear-gradient(180deg, var(--orange), #d94800)' }}
-              onClick={(e) => {
-                e.stopPropagation();
-                onNavigate('metalcalc');
-              }}
-              title="Explore full interactive enterprise manual & operating guide"
+              onClick={(e) => openDownloadModal('metalcalc', e)}
+              title="Download MetalCalc for Windows, macOS, Android, iOS"
             >
-              <ExternalLink style={{ width: '15px', height: '15px' }} />
-              <span>Explore Guide</span>
+              <Download style={{ width: '16px', height: '16px' }} />
+              <span>Download</span>
             </button>
             <a
               href="https://metalcalcquote.arguscnc.com/"
@@ -73,14 +70,6 @@ export default function ProductsView({ onNavigate, showToast }) {
             >
               <Globe style={{ width: '16px', height: '16px', color: 'var(--orange)' }} />
             </a>
-            <button
-              className="btn secondary"
-              style={{ padding: '0 10px', flexShrink: 0 }}
-              onClick={(e) => openDownloadModal('metalcalc', e)}
-              title="View download files for Windows, Mac, Android, iOS"
-            >
-              <Download style={{ width: '16px', height: '16px' }} />
-            </button>
           </div>
           <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
@@ -121,14 +110,11 @@ export default function ProductsView({ onNavigate, showToast }) {
             <button
               className="btn"
               style={{ flex: 1, background: 'linear-gradient(180deg, var(--green), #00936b)' }}
-              onClick={(e) => {
-                e.stopPropagation();
-                onNavigate('attendance');
-              }}
-              title="Explore full interactive enterprise manual & operating guide"
+              onClick={(e) => openDownloadModal('attendance', e)}
+              title="Download Attendance Intelligence for Windows, macOS, Android, iOS"
             >
-              <ExternalLink style={{ width: '15px', height: '15px' }} />
-              <span>Explore Guide</span>
+              <Download style={{ width: '16px', height: '16px' }} />
+              <span>Download</span>
             </button>
             <a
               href="https://argusattendanceintelligence.argussoftwares.com/"
@@ -141,14 +127,6 @@ export default function ProductsView({ onNavigate, showToast }) {
             >
               <Globe style={{ width: '16px', height: '16px', color: 'var(--green)' }} />
             </a>
-            <button
-              className="btn secondary"
-              style={{ padding: '0 10px', flexShrink: 0 }}
-              onClick={(e) => openDownloadModal('attendance', e)}
-              title="View download files for Windows, Mac, Android, iOS"
-            >
-              <Download style={{ width: '16px', height: '16px' }} />
-            </button>
           </div>
           <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
@@ -196,8 +174,8 @@ export default function ProductsView({ onNavigate, showToast }) {
               onClick={(e) => openDownloadModal('erp', e)}
               title="View download files for Windows, Mac, Android, iOS"
             >
-              <Download />
-              <span>Download Files</span>
+              <Download style={{ width: '16px', height: '16px' }} />
+              <span>Download</span>
             </button>
             <button
               className="btn secondary"

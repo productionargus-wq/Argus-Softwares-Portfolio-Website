@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Download, Monitor, Smartphone, Apple, Terminal, X, ArrowLeft, FileCode, CheckCircle2, ExternalLink, RefreshCw, Globe, Sparkles, ShieldCheck } from 'lucide-react';
+import { Download, Monitor, Smartphone, Apple, Terminal, X, ArrowLeft, ExternalLink, RefreshCw, Globe } from 'lucide-react';
 import { PRODUCTS_DOWNLOAD_DATA } from '../../data/productsDownloadData';
 
 const platformIconMap = {
-  windows: <Monitor style={{ width: '18px', height: '18px' }} />,
-  macos: <Apple style={{ width: '18px', height: '18px' }} />,
-  android: <Smartphone style={{ width: '18px', height: '18px' }} />,
-  ios: <Smartphone style={{ width: '18px', height: '18px' }} />,
-  linux: <Terminal style={{ width: '18px', height: '18px' }} />
+  windows: <Monitor style={{ width: '20px', height: '20px' }} />,
+  macos: <Apple style={{ width: '20px', height: '20px' }} />,
+  android: <Smartphone style={{ width: '20px', height: '20px' }} />,
+  ios: <Smartphone style={{ width: '20px', height: '20px' }} />,
+  linux: <Terminal style={{ width: '20px', height: '20px' }} />
 };
 
 const GITHUB_REPO_MAP = {
@@ -26,9 +26,6 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
     repoName ? `https://github.com/${repoName}/releases/latest` : ''
   );
 
-  const platformKeys = Object.keys(productData.platforms);
-  const [selectedPlatform, setSelectedPlatform] = useState(platformKeys[0] || 'windows');
-
   // Auto-fetch latest release from GitHub API dynamically
   useEffect(() => {
     let isMounted = true;
@@ -42,7 +39,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
           if (!isMounted || !latest) return;
           setReleaseUrl(latest.html_url || `https://github.com/${repoName}/releases/latest`);
 
-          // Dynamically map uploaded GitHub release assets to corresponding platform tabs
+          // Dynamically map uploaded GitHub release assets to corresponding platform packages
           const updatedPlatforms = { ...baseProduct.platforms };
 
           if (Array.isArray(latest.assets)) {
@@ -53,35 +50,17 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 : (asset.size / (1024 * 1024)).toFixed(1) + ' MB';
               const sha = asset.digest ? asset.digest.replace('sha256:', '') : null;
 
-              // Windows Setup Installer
-              if (nameLower.includes('setup') && nameLower.endsWith('.exe') && updatedPlatforms.windows) {
-                updatedPlatforms.windows = {
-                  ...updatedPlatforms.windows,
-                  fileName: asset.name,
-                  fileSize: sizeFormatted,
-                  downloadUrl: asset.browser_download_url,
-                  sha256: sha || updatedPlatforms.windows.sha256
-                };
-              }
-              // Windows Standalone Portable Executable
-              else if (nameLower.includes('standalone') && nameLower.endsWith('.exe') && updatedPlatforms.windows) {
-                updatedPlatforms.windows = {
-                  ...updatedPlatforms.windows,
-                  secondaryFileName: asset.name,
-                  secondaryFileSize: sizeFormatted,
-                  secondaryDownloadUrl: asset.browser_download_url,
-                  secondarySha256: sha || updatedPlatforms.windows.secondarySha256
-                };
-              }
-              // Fallback any .exe
-              else if (nameLower.endsWith('.exe') && updatedPlatforms.windows && !updatedPlatforms.windows.downloadUrl) {
-                updatedPlatforms.windows = {
-                  ...updatedPlatforms.windows,
-                  fileName: asset.name,
-                  fileSize: sizeFormatted,
-                  downloadUrl: asset.browser_download_url,
-                  sha256: sha || updatedPlatforms.windows.sha256
-                };
+              // Windows Installer (only single official .exe)
+              if (nameLower.endsWith('.exe') && updatedPlatforms.windows) {
+                if (nameLower.includes('setup') || !updatedPlatforms.windows.downloadUrl) {
+                  updatedPlatforms.windows = {
+                    ...updatedPlatforms.windows,
+                    fileName: asset.name,
+                    fileSize: sizeFormatted,
+                    downloadUrl: asset.browser_download_url,
+                    sha256: sha || updatedPlatforms.windows.sha256
+                  };
+                }
               }
 
               // macOS DMG Installer
@@ -92,16 +71,6 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                   fileSize: sizeFormatted,
                   downloadUrl: asset.browser_download_url,
                   sha256: sha || updatedPlatforms.macos.sha256
-                };
-              }
-              // macOS Portable App (.ZIP)
-              else if ((nameLower.includes('macos') || nameLower.includes('mac') || nameLower.includes('app')) && nameLower.endsWith('.zip') && updatedPlatforms.macos) {
-                updatedPlatforms.macos = {
-                  ...updatedPlatforms.macos,
-                  secondaryFileName: asset.name,
-                  secondaryFileSize: sizeFormatted,
-                  secondaryDownloadUrl: asset.browser_download_url,
-                  secondarySha256: sha || updatedPlatforms.macos.secondarySha256
                 };
               }
 
@@ -158,8 +127,6 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
     };
   }, [productKey, baseProduct, repoName]);
 
-  const currentPkg = productData.platforms[selectedPlatform] || productData.platforms[platformKeys[0]];
-
   // Close on Escape key & lock body scroll
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -176,8 +143,8 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
     };
   }, [onClose]);
 
-  const handleTriggerDownload = (fileName, customUrl) => {
-    const downloadUrl = customUrl || currentPkg?.downloadUrl;
+  const handleTriggerDownload = (fileName, customUrl, pkg) => {
+    const downloadUrl = customUrl || pkg?.downloadUrl;
     // If download URL is available (local path or external CDN), trigger direct download
     if (downloadUrl) {
       const link = document.createElement('a');
@@ -197,7 +164,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
     // Fallback simulated file if offline or custom preview
     const dummyBlob = new Blob(
       [
-        `ARGUS SOFTWARES - Official Release Package\n\nProduct: ${productData.title}\nVersion: ${productData.version}\nFile: ${fileName}\nPlatform: ${currentPkg.osTitle}\nRelease Date: ${productData.releaseDate}\nSHA-256: ${currentPkg.sha256}\n\nThank you for downloading from ARGUS Softwares official distribution.`
+        `ARGUS SOFTWARES - Official Release Package\n\nProduct: ${productData.title}\nVersion: ${productData.version}\nFile: ${fileName}\nPlatform: ${pkg?.osTitle || 'OS Package'}\nRelease Date: ${productData.releaseDate}\n\nThank you for downloading from ARGUS Softwares official distribution.`
       ],
       { type: 'application/octet-stream' }
     );
@@ -211,7 +178,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
     document.body.removeChild(link);
     setTimeout(() => URL.revokeObjectURL(blobUrl), 100);
 
-    showToast?.(`Downloading ${fileName} (${currentPkg.fileSize})`);
+    showToast?.(`Downloading ${fileName} (${pkg?.fileSize || ''})`);
   };
 
   return createPortal(
@@ -299,9 +266,9 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 gap: '12px',
                 background: 'linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(37, 99, 235, 0.08))',
                 border: '1px solid rgba(255, 107, 53, 0.2)',
-                borderRadius: '10px',
+                borderRadius: '12px',
                 padding: '12px 16px',
-                marginBottom: '16px'
+                marginBottom: '14px'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -325,7 +292,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                     Prefer using online in your browser?
                   </div>
                   <div style={{ fontSize: '12px', color: '#64748b' }}>
-                    No setup or downloads required. Launch the live production cloud edition of {productData.title} instantly.
+                    No setup or downloads required. Launch the live cloud edition of {productData.title} instantly.
                   </div>
                 </div>
               </div>
@@ -354,140 +321,56 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
             </div>
           )}
 
-          {/* Platform Selector Tabs */}
-          <div className="platform-tabs" role="tablist">
-            {platformKeys.map((key) => {
-              const p = productData.platforms[key];
-              const isActive = selectedPlatform === key;
-              return (
-                <button
-                  key={key}
-                  role="tab"
-                  aria-selected={isActive}
-                  className={`platform-tab ${isActive ? 'active' : ''}`}
-                  onClick={() => setSelectedPlatform(key)}
-                >
-                  {platformIconMap[key]}
-                  <span className="platform-name">{p.name}</span>
-                  <span className="platform-ext">{p.extension}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Active Platform Download Showcase Card */}
-          <div className="download-showcase-card">
-            <div className="showcase-header">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div className="os-icon-badge">
-                  {platformIconMap[selectedPlatform]}
-                </div>
-                <div>
-                  <h4 style={{ margin: 0, fontSize: '17px', fontWeight: 800, color: '#0f172a' }}>
-                    {currentPkg.osTitle}
-                  </h4>
-                  <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>
-                    Published: <strong>{productData.releaseDate}</strong> • License: {productData.license}
+          {/* OS Download List - Stacked vertically line-by-line */}
+          <div className="os-download-list">
+            {Object.entries(productData.platforms).map(([platformKey, pkg]) => (
+              <div key={platformKey} className="os-download-card">
+                <div className="os-card-left">
+                  <div className="os-icon-badge">
+                    {platformIconMap[platformKey] || <Monitor style={{ width: '20px', height: '20px' }} />}
+                  </div>
+                  <div className="os-card-details">
+                    <div className="os-title-row">
+                      <span className="os-title">{pkg.osTitle || pkg.name}</span>
+                      <span className="platform-ext">{pkg.extension}</span>
+                      {pkg.fileSize && (
+                        <span className="os-size-badge">{pkg.fileSize}</span>
+                      )}
+                    </div>
+                    <div className="os-filename" title={pkg.fileName}>
+                      {pkg.fileName}
+                    </div>
+                    {pkg.requirements && (
+                      <div className="pkg-requirements">
+                        {pkg.requirements}
+                      </div>
+                    )}
                   </div>
                 </div>
-              </div>
 
-              <div className="filesize-pill">
-                <strong>{currentPkg.fileSize}</strong>
-              </div>
-            </div>
-
-            {/* Primary Package Download Box */}
-            <div className="package-download-box">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
-                <div className="file-icon-box">
-                  <FileCode style={{ width: '22px', height: '22px' }} />
-                </div>
-                <div style={{ minWidth: 0 }}>
-                  <div className="pkg-filename" title={currentPkg.fileName}>
-                    {currentPkg.fileName}
-                  </div>
-                  <div className="pkg-requirements">
-                    {currentPkg.requirements}
-                  </div>
-                  <div className="cdn-note">
-                    {currentPkg.downloadUrl?.startsWith('/')
-                      ? '⚡ Direct high-speed download hosted on site package server'
-                      : '⚡ Direct high-speed download hosted on GitHub Global CDN'}
-                  </div>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-end' }}>
-                <button
-                  className="btn download-action-btn"
-                  onClick={() => handleTriggerDownload(currentPkg.fileName)}
-                >
-                  <Download style={{ width: '18px', height: '18px' }} />
-                  <span>Download for {currentPkg.name}</span>
-                </button>
-                {currentPkg.downloadUrl && (
-                  <a
-                    href={currentPkg.downloadUrl}
-                    download={currentPkg.fileName}
-                    target={currentPkg.downloadUrl.startsWith('http') ? '_blank' : undefined}
-                    rel={currentPkg.downloadUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    style={{ fontSize: '11px', color: '#64748b', textDecoration: 'underline' }}
+                <div className="os-card-actions">
+                  <button
+                    className="btn download-action-btn"
+                    onClick={() => handleTriggerDownload(pkg.fileName, pkg.downloadUrl, pkg)}
+                    title={`Download for ${pkg.name}`}
                   >
-                    Direct mirror link
-                  </a>
-                )}
+                    <Download style={{ width: '16px', height: '16px' }} />
+                    <span>Download for {pkg.name}</span>
+                  </button>
+                  {pkg.downloadUrl && (
+                    <a
+                      href={pkg.downloadUrl}
+                      download={pkg.fileName}
+                      target={pkg.downloadUrl.startsWith('http') ? '_blank' : undefined}
+                      rel={pkg.downloadUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="os-direct-link"
+                    >
+                      Direct mirror link
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-
-            {/* Secondary installer / portable option if available */}
-            {(currentPkg.secondaryFileName || currentPkg.secondaryFile) && (
-              <div className="secondary-pkg-row" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', marginTop: '10px' }}>
-                <span style={{ fontSize: '12px', color: '#475569' }}>
-                  {currentPkg.secondaryLabel || 'Alternative distribution'}: <strong>{currentPkg.secondaryFileName || currentPkg.secondaryFile}</strong>
-                  {currentPkg.secondaryFileSize && ` (${currentPkg.secondaryFileSize})`}
-                </span>
-                <button
-                  className="btn secondary sm"
-                  onClick={() => handleTriggerDownload(currentPkg.secondaryFileName || currentPkg.secondaryFile?.split(' ')[0], currentPkg.secondaryDownloadUrl)}
-                  title={`Download ${currentPkg.secondaryFileName || currentPkg.secondaryFile}`}
-                >
-                  <Download style={{ width: '14px', height: '14px' }} />
-                  <span>{currentPkg.secondaryActionLabel || 'Download Alternative'}</span>
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* Changelog & Quick Install Guide */}
-          <div className="modal-info-split">
-            <div className="modal-info-box">
-              <h5 className="modal-info-title">
-                <CheckCircle2 style={{ width: '16px', height: '16px', color: 'var(--orange)' }} />
-                What's New in {productData.version}
-              </h5>
-              <ul className="modal-changelog-list">
-                {productData.changelog.map((item, idx) => (
-                  <li key={idx}>
-                    <i>•</i>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="modal-info-box">
-              <h5 className="modal-info-title">
-                <ShieldCheck style={{ width: '16px', height: '16px', color: 'var(--blue)' }} />
-                Release & Distribution Sync
-              </h5>
-              <p style={{ margin: '0 0 8px 0', fontSize: '12.5px', lineHeight: '1.6', color: '#475569' }}>
-                All binaries are hosted on GitHub Releases CDN. When you publish a new version on GitHub, this website automatically checks GitHub's Releases API on every visitor request and serves the newest release instantly without redeploying code.
-              </p>
-              <div style={{ fontSize: '11.5px', color: '#64748b', background: '#f8fafc', padding: '8px 10px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                💡 <strong>Admin workflow</strong>: To add a new version or replace an installer, draft a release on GitHub and upload the files. The website updates automatically!
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
