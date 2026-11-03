@@ -13,18 +13,36 @@ const platformIconMap = {
 
 const productMeta = {
   metalcalc: {
-    color: 'var(--orange)',
-    gradient: 'linear-gradient(135deg, var(--orange), #d94800)',
+    color: '#ea580c',
+    gradient: 'linear-gradient(135deg, #f97316, #ea580c)',
+    bgGradient: 'linear-gradient(145deg, #fff7ed 0%, #ffedd5 45%, #ffffff 100%)',
+    borderColor: 'rgba(249, 115, 22, 0.3)',
+    boxShadow: '0 10px 32px rgba(249, 115, 22, 0.08)',
+    tagBg: '#ffedd5',
+    tagColor: '#c2410c',
+    cardBorder: 'rgba(254, 215, 170, 0.75)',
     icon: <Calculator style={{ width: '24px', height: '24px' }} />
   },
   attendance: {
-    color: 'var(--green)',
-    gradient: 'linear-gradient(135deg, var(--green), #00936b)',
+    color: '#059669',
+    gradient: 'linear-gradient(135deg, #10b981, #059669)',
+    bgGradient: 'linear-gradient(145deg, #f0fdf4 0%, #dcfce7 45%, #ffffff 100%)',
+    borderColor: 'rgba(16, 185, 129, 0.3)',
+    boxShadow: '0 10px 32px rgba(16, 185, 129, 0.08)',
+    tagBg: '#dcfce7',
+    tagColor: '#047857',
+    cardBorder: 'rgba(167, 243, 208, 0.75)',
     icon: <Users style={{ width: '24px', height: '24px' }} />
   },
   erp: {
-    color: 'var(--purple)',
-    gradient: 'linear-gradient(135deg, var(--purple), #5e1cb0)',
+    color: '#7c3aed',
+    gradient: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
+    bgGradient: 'linear-gradient(145deg, #faf5ff 0%, #f3e8ff 45%, #ffffff 100%)',
+    borderColor: 'rgba(139, 92, 246, 0.3)',
+    boxShadow: '0 10px 32px rgba(139, 92, 246, 0.08)',
+    tagBg: '#f3e8ff',
+    tagColor: '#6d28d9',
+    cardBorder: 'rgba(221, 214, 254, 0.75)',
     icon: <Database style={{ width: '24px', height: '24px' }} />
   }
 };
@@ -73,11 +91,11 @@ export default function DownloadsView({ onNavigate, showToast }) {
               key={prod.id}
               className="box"
               style={{
-                borderRadius: '20px',
-                padding: '24px',
-                border: '1px solid var(--line)',
-                background: '#ffffff',
-                boxShadow: '0 4px 20px rgba(15, 23, 42, 0.03)'
+                borderRadius: '24px',
+                padding: '26px 28px',
+                border: `1.5px solid ${meta.borderColor}`,
+                background: meta.bgGradient,
+                boxShadow: meta.boxShadow
               }}
             >
               {/* Product Header */}
@@ -90,7 +108,7 @@ export default function DownloadsView({ onNavigate, showToast }) {
                   gap: '14px',
                   paddingBottom: '18px',
                   marginBottom: '18px',
-                  borderBottom: '1px solid var(--line)'
+                  borderBottom: `1px solid ${meta.borderColor}`
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
@@ -115,7 +133,18 @@ export default function DownloadsView({ onNavigate, showToast }) {
                       <h3 style={{ margin: 0, fontSize: '20px', fontWeight: 800, color: 'var(--text)' }}>
                         {prod.title}
                       </h3>
-                      <span className="ver" style={{ fontSize: '11px', padding: '2px 8px' }}>
+                      <span
+                        className="ver"
+                        style={{
+                          fontSize: '11px',
+                          padding: '3px 10px',
+                          background: meta.tagBg,
+                          color: meta.tagColor,
+                          border: `1px solid ${meta.borderColor}`,
+                          borderRadius: '999px',
+                          fontWeight: 700
+                        }}
+                      >
                         {prod.id === 'attendance' ? 'v2.0.0' : prod.version}
                       </span>
                     </div>
@@ -135,7 +164,11 @@ export default function DownloadsView({ onNavigate, showToast }) {
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '7px',
-                      textDecoration: 'none'
+                      textDecoration: 'none',
+                      background: '#ffffff',
+                      border: `1px solid ${meta.borderColor}`,
+                      fontWeight: 600,
+                      boxShadow: '0 2px 6px rgba(15, 23, 42, 0.04)'
                     }}
                     title={`Open ${prod.title} in your browser`}
                   >
@@ -149,7 +182,15 @@ export default function DownloadsView({ onNavigate, showToast }) {
               {/* Direct Files List */}
               <div className="os-download-list">
                 {Object.entries(prod.platforms || {}).map(([platformKey, pkg]) => (
-                  <div key={platformKey} className="os-download-card">
+                  <div
+                    key={platformKey}
+                    className="os-download-card"
+                    style={{
+                      background: '#ffffff',
+                      border: `1px solid ${meta.cardBorder}`,
+                      boxShadow: '0 2px 8px rgba(15, 23, 42, 0.03)'
+                    }}
+                  >
                     <div className="os-card-left">
                       <div className="os-icon-badge" style={{ color: meta.color }}>
                         {platformIconMap[platformKey] || <Monitor style={{ width: '20px', height: '20px' }} />}
