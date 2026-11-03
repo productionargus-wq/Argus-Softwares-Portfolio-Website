@@ -1,5 +1,5 @@
 export const ATTENDANCE_MANUAL_METADATA = {
-  title: 'ARGUS ATTENDANCE SYSTEM',
+  title: 'ARGUS ATTENDANCE INTELLIGENCE',
   subtitle: 'COMPLETE ENTERPRISE FEATURE GUIDE & OPERATING MANUAL',
   tagline: 'Next-Generation AI Biometrics, GPS Geofencing, Automated Payroll & Multi-Branch Operations',
   version: 'Version 5.1 (Production Enterprise Release)',

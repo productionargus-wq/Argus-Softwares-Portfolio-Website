@@ -176,7 +176,7 @@ export default function DownloadsView({ onNavigate, uploads, onUpload, onDownloa
               <h3>Business Intelligence</h3>
               <div className="sub">Business operations in one place.</div>
             </div>
-            <div className="ver purple">v2.4.3</div>
+            <div className="ver purple">v2.0.0</div>
           </div>
           <div className="stats">
             <div className="stat green">

@@ -54,7 +54,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
       },
       ios: {
         id: 'ios',
-        name: 'iOS / iPadOS',
+        name: 'iOS',
         osTitle: 'iPhone & iPad',
         extension: '.ipa',
         fileName: 'MetalCalculator-iOS.ipa',
@@ -148,8 +148,8 @@ export const PRODUCTS_DOWNLOAD_DATA = {
     id: 'erp',
     title: 'ARGUS Business Intelligence',
     tagline: 'End-to-End Plant Operations, Stock, Purchases & Invoicing',
-    version: 'v2.4.3',
-    releaseTag: 'v2.4.3',
+    version: 'v2.0.0',
+    releaseTag: 'v2.0.0',
     releaseDate: 'October 2026',
     license: 'Enterprise Plant Deployment',
     changelog: [
@@ -164,7 +164,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         name: 'Windows',
         osTitle: 'Windows Server & Workstation Suite',
         extension: '.exe / .msi',
-        fileName: 'ArgusERP-ServerClient-v2.4.3-Setup.exe',
+        fileName: 'ArgusERP-ServerClient-v2.0.0-Setup.exe',
         fileSize: '112.5 MB',
         downloadUrl: 'https://github.com/productionargus-wq/Argus-Portfolio-Website/releases/download/v1.0.0/MetalCalculator-standalone.exe',
         requirements: 'Windows 10 / 11 / Server 2019+, 8 GB RAM, SQL Server / SQLite',
@@ -176,7 +176,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         name: 'macOS',
         osTitle: 'macOS Manager & Auditor Suite',
         extension: '.dmg',
-        fileName: 'ArgusERP-Manager-v2.4.3.dmg',
+        fileName: 'ArgusERP-Manager-v2.0.0.dmg',
         fileSize: '98.4 MB',
         requirements: 'macOS 12.0 Monterey or later',
         sha256: 'cb8379ac2098aa165029e3938a51da0bcecfc008fd6795f401178647f96c5b34'
@@ -186,7 +186,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         name: 'Android',
         osTitle: 'Android Shop-Floor & Barcode Scanner App',
         extension: '.apk',
-        fileName: 'ArgusERP-Scanner-v2.4.3.apk',
+        fileName: 'ArgusERP-Scanner-v2.0.0.apk',
         fileSize: '26.7 MB',
         requirements: 'Android 9.0 or later with Camera/2D Scanner',
         sha256: '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce'
@@ -196,7 +196,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         name: 'iOS',
         osTitle: 'iOS Executive Dashboard',
         extension: '.ipa',
-        fileName: 'ArgusERP-Executive-v2.4.3.ipa',
+        fileName: 'ArgusERP-Executive-v2.0.0.ipa',
         fileSize: '31.0 MB',
         requirements: 'iOS 15.0 or later',
         sha256: '3a52ce780950d4d969792a2559cd519d7ee8c727bb30a519d2b21e6c530c0eee'

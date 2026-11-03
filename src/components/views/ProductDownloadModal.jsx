@@ -193,12 +193,9 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
             </button>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                <h3 className="modal-title">{productData.title}</h3>
-                <span className="ver">{productData.version}</span>
-                <span className="live-sync-badge" title="Real-time connected to official GitHub Releases">
-                  <span className="live-dot" />
-                  <span>{isLiveSync ? `Live Release ${productData.releaseTag}` : 'GitHub Release Connected'}</span>
-                </span>
+                <h3 className="modal-title">Argus Attendance Intelligence</h3>
+                <span className="ver">v2.0.0</span>
+
                 {isFetchingRelease && (
                   <RefreshCw style={{ width: '13px', height: '13px', color: '#64748b', animation: 'spin 1s linear infinite' }} />
                 )}
@@ -243,7 +240,6 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 className="github-release-btn"
                 title="View full release and source on GitHub"
               >
-                <span>GitHub Release</span>
                 <ExternalLink style={{ width: '13px', height: '13px' }} />
               </a>
             )}
@@ -365,7 +361,7 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                       rel={pkg.downloadUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="os-direct-link"
                     >
-                      Direct mirror link
+
                     </a>
                   )}
                 </div>

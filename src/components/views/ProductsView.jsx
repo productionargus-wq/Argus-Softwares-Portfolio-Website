@@ -17,7 +17,7 @@ export default function ProductsView({ onNavigate, showToast }) {
         eyebrow="Software Universe"
         line1="Our"
         line2="Products"
-        desc="Explore the main software directions under ARGUS Softwares. Click any product to access cross-platform installation packages (.exe, .dmg, .apk, .ipa)."
+        desc="Explore the main software directions under ARGUS Softwares. Click any product to access cross-platform installation packages."
         mainIcon="Package"
       />
 
@@ -145,7 +145,7 @@ export default function ProductsView({ onNavigate, showToast }) {
               <h3>Business Intelligence</h3>
               <div className="sub">Business operations in one place.</div>
             </div>
-            <div className="ver purple">v2.4.3</div>
+            <div className="ver purple">v2.0.0</div>
           </div>
           <div className="stats">
             <div className="stat green">
