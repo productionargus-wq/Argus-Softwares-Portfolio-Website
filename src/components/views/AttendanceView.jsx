@@ -25,7 +25,7 @@ import {
 import {
   ATTENDANCE_MANUAL_METADATA,
   PLATFORM_ADVANTAGES,
-  ARCHITECTURE_COMPONENTS,
+  CAPABILITY_HIGHLIGHTS,
   MANUAL_SECTIONS
 } from '../../data/attendanceManualData';
 
@@ -174,24 +174,8 @@ export default function AttendanceView({ onNavigate, showToast }) {
 
         <p className="manual-tagline">{ATTENDANCE_MANUAL_METADATA.tagline}</p>
 
-        {/* Technical Metadata Grid */}
+        {/* Metadata Banner */}
         <div className="manual-meta-grid">
-          <div className="manual-meta-item">
-            <span className="manual-meta-label">Document Version</span>
-            <span className="manual-meta-value">{ATTENDANCE_MANUAL_METADATA.version}</span>
-          </div>
-          <div className="manual-meta-item">
-            <span className="manual-meta-label">Target Audience</span>
-            <span className="manual-meta-value">{ATTENDANCE_MANUAL_METADATA.targetAudience}</span>
-          </div>
-          <div className="manual-meta-item">
-            <span className="manual-meta-label">Core Platform</span>
-            <span className="manual-meta-value">{ATTENDANCE_MANUAL_METADATA.corePlatform}</span>
-          </div>
-          <div className="manual-meta-item">
-            <span className="manual-meta-label">Security & Compliance</span>
-            <span className="manual-meta-value">{ATTENDANCE_MANUAL_METADATA.securityCompliance}</span>
-          </div>
           <div className="manual-meta-item">
             <span className="manual-meta-label">Publisher</span>
             <span className="manual-meta-value">{ATTENDANCE_MANUAL_METADATA.publisher}</span>
@@ -240,7 +224,7 @@ export default function AttendanceView({ onNavigate, showToast }) {
             onClick={() => scrollToSection('arch-overview')}
           >
             <Sparkles style={{ width: '14px', height: '14px' }} />
-            <span>Architecture</span>
+            <span>Overview</span>
           </button>
           {MANUAL_SECTIONS.map((sec) => (
             <button
@@ -262,7 +246,7 @@ export default function AttendanceView({ onNavigate, showToast }) {
         </div>
       </nav>
 
-      {/* 3. EXECUTIVE SUMMARY & PLATFORM ARCHITECTURE */}
+      {/* 3. EXECUTIVE SUMMARY & PLATFORM CAPABILITIES */}
       <section className="manual-section-card" id="arch-overview">
         <div className="manual-sec-header">
           <div className="manual-sec-title-wrap">
@@ -271,13 +255,13 @@ export default function AttendanceView({ onNavigate, showToast }) {
             </div>
             <div className="manual-sec-titles">
               <span className="manual-sec-tag">Foundational Overview</span>
-              <h2>Executive Summary & Platform Architecture</h2>
+              <h2>Executive Summary & Core Capabilities</h2>
             </div>
           </div>
         </div>
 
         <p className="manual-sec-summary">
-          The <strong>ARGUS AI Attendance System</strong> is a multi-tenant enterprise human capital platform engineered to automate staff identification, attendance logging, leave governance, and end-to-end payroll computation without requiring expensive biometric hardware. Utilizing computer vision neural networks, the system converts standard webcams and smartphone cameras into sub-second facial recognition terminals with anti-spoofing liveness verification.
+          The <strong>ARGUS Attendance Intelligence</strong> is an easy-to-use workforce management platform designed to automate staff attendance, leave governance, and end-to-end payroll computation without requiring expensive biometric hardware. Utilizing smart facial recognition and secure GPS tracking, the system converts standard webcams, tablets, and smartphones into quick clock-in terminals with built-in fraud prevention.
         </p>
 
         {/* 5 Operational Advantages */}
@@ -293,24 +277,24 @@ export default function AttendanceView({ onNavigate, showToast }) {
           ))}
         </div>
 
-        {/* Architecture Table */}
+        {/* Core Capabilities Table */}
         <h3 style={{ fontSize: '16px', margin: '22px 0 10px', color: 'var(--text)' }}>
-          Core Technological Architecture Matrix
+          Core Operational Capabilities
         </h3>
         <div className="manual-table-container">
           <table className="manual-table">
             <thead>
               <tr>
-                <th style={{ width: '22%' }}>Component</th>
-                <th style={{ width: '38%' }}>Technology / Implementation</th>
-                <th style={{ width: '40%' }}>Function & Enterprise Advantage</th>
+                <th style={{ width: '25%' }}>Capability</th>
+                <th style={{ width: '35%' }}>How It Works</th>
+                <th style={{ width: '40%' }}>Business Advantage</th>
               </tr>
             </thead>
             <tbody>
-              {ARCHITECTURE_COMPONENTS.map((row, idx) => (
+              {CAPABILITY_HIGHLIGHTS.map((row, idx) => (
                 <tr key={idx}>
                   <td className="bold">{row.component}</td>
-                  <td><code>{row.tech}</code></td>
+                  <td>{row.tech}</td>
                   <td>{row.advantage}</td>
                 </tr>
               ))}
@@ -455,22 +439,22 @@ export default function AttendanceView({ onNavigate, showToast }) {
             </div>
           )}
 
-          {/* Security Specifications Matrix (Section 12) */}
+          {/* Security & Reliability Table (Section 12) */}
           {sec.securitySpecs && (
             <div className="manual-table-container">
               <table className="manual-table">
                 <thead>
                   <tr>
-                    <th style={{ width: '25%' }}>Domain</th>
-                    <th style={{ width: '35%' }}>Specification / Standard</th>
-                    <th style={{ width: '40%' }}>Enterprise Benefit</th>
+                    <th style={{ width: '25%' }}>Feature</th>
+                    <th style={{ width: '35%' }}>Standard</th>
+                    <th style={{ width: '40%' }}>Customer Benefit</th>
                   </tr>
                 </thead>
                 <tbody>
                   {sec.securitySpecs.map((spec, sIdx) => (
                     <tr key={sIdx}>
                       <td className="bold">{spec.domain}</td>
-                      <td><code>{spec.standard}</code></td>
+                      <td>{spec.standard}</td>
                       <td>{spec.benefit}</td>
                     </tr>
                   ))}
@@ -602,7 +586,7 @@ export default function AttendanceView({ onNavigate, showToast }) {
                   }}
                 />
                 <span>
-                  Anti-Spoofing Liveness Verified • Sub-400ms 128D Vector Match • Auto-Directional Direction IN/OUT
+                  Real-Time Face Match • Live Fraud Prevention • Automatic IN / OUT Detection
                 </span>
               </div>
             </div>

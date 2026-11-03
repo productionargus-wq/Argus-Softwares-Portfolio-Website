@@ -2,10 +2,6 @@ export const ATTENDANCE_MANUAL_METADATA = {
   title: 'ARGUS ATTENDANCE INTELLIGENCE',
   subtitle: 'COMPLETE ENTERPRISE FEATURE GUIDE & OPERATING MANUAL',
   tagline: 'Next-Generation AI Biometrics, GPS Geofencing, Automated Payroll & Multi-Branch Operations',
-  version: 'Version 5.1 (Production Enterprise Release)',
-  targetAudience: 'Corporate HR Directors, System Administrators, Operations Executives',
-  corePlatform: 'Flask / Python 3.12, MongoDB Atlas, Deep Learning Face Engine, Leaflet GPS',
-  securityCompliance: 'PBKDF2/SHA-256 Hashing, GPS Radius Locking, Anti-Spoofing Liveness AI',
   publisher: 'ARGUS CNC™ (Coimbatore, Tamil Nadu, India)',
   releaseDate: 'October 2026',
   heroImage: '/attendance-manual/fig0_dashboard.png',
@@ -36,31 +32,31 @@ export const PLATFORM_ADVANTAGES = [
   }
 ];
 
-export const ARCHITECTURE_COMPONENTS = [
+export const CAPABILITY_HIGHLIGHTS = [
   {
-    component: 'AI Face Engine',
-    tech: '128D Deep Metric Learning',
-    advantage: 'Sub-second face matching with ambient light invariance'
+    component: 'Smart Face Recognition',
+    tech: 'Sub-second optical identification',
+    advantage: 'Staff can clock in touchlessly in milliseconds with accurate identity verification.'
   },
   {
-    component: 'Cloud Database',
-    tech: 'MongoDB Atlas Clustered Replica',
-    advantage: 'Real-time distributed JSON records with multi-AZ replication & 99.99% uptime'
+    component: 'Real-Time Cloud Sync',
+    tech: 'Secure cloud data synchronization',
+    advantage: 'Attendance registers update instantly across headquarters, branch offices, and mobile phones.'
   },
   {
-    component: 'Geofencing',
-    tech: 'Haversine Distance Geometry',
-    advantage: 'Locks physical punches within exact workplace meters with ±5m precision'
+    component: 'Workplace GPS Protection',
+    tech: 'Automated radius verification',
+    advantage: 'Ensures staff punches are only accepted when physically inside workplace boundaries.'
   },
   {
-    component: 'Payroll Engine',
-    tech: 'ReportLab Vector Generation',
-    advantage: 'Generates pixel-perfect corporate payslips & payroll registers'
+    component: 'Automated Payroll Engine',
+    tech: 'Built-in salary & statutory rules',
+    advantage: 'Calculates overtime, leaves, advances, and produces professional printable payslips.'
   },
   {
-    component: 'Field Tracker',
-    tech: 'OpenStreetMap / Leaflet Engine',
-    advantage: 'Live route tracing, customer visits & petrol reimbursement calculation'
+    component: 'Mobile Field Operations',
+    tech: 'Live route & client visit logging',
+    advantage: 'Tracks client visits, location check-ins, and calculates travel distance allowances.'
   }
 ];
 
@@ -71,23 +67,23 @@ export const MANUAL_SECTIONS = [
     title: 'Multi-Tier Authentication & Access Portals',
     shortTitle: 'Authentication',
     badge: 'Security Gateways',
-    summary: 'Security in the ARGUS ecosystem is built upon role-segregated gateways. Each user tier (Company Administrators, Super Administrators, Field Staff, and General Employees) accesses a dedicated authentication portal designed specifically for their operational context.',
+    summary: 'Security in the ARGUS ecosystem is built upon dedicated access portals. Each role (Company Administrators, Branch Managers, Field Staff, and Employees) has a simple, tailored interface to complete their tasks smoothly.',
     subsections: [
       {
         title: '1.1 Company Administration Login Gateway',
-        text: 'The primary enterprise portal for managing day-to-day operations. Company Admins log in using their authorized corporate email and encrypted credentials, or via Google Workspace OAuth single sign-on. The system automatically initializes tenant-scoped session tokens, loads geofencing policies, and syncs branch assignments.',
+        text: 'The primary enterprise portal for managing day-to-day operations. Company Admins log in securely using their corporate email or Google Workspace single sign-on. The system automatically loads company policies, branch settings, and staff records.',
         image: '/attendance-manual/fig1_1_company_login.png',
         caption: 'Figure 1.1: Company Administration Login Portal with Google OAuth integration'
       },
       {
         title: '1.2 System Administration (Super Admin) Gateway',
-        text: 'Super administrators manage tenant provisioning, subscription quotas, and platform-level configurations across all client organizations through an isolated security barrier.',
+        text: 'Super administrators manage company subscriptions, quotas, and platform configurations across client organizations through an isolated security barrier.',
         image: '/attendance-manual/fig1_2_superadmin_login.png',
         caption: 'Figure 1.2: Super Administration Access Gateway'
       },
       {
         title: '1.3 Employee Self-Service & Field Worker Mobile Portals',
-        text: 'To empower mobile and remote employees, specialized responsive portals are provided for viewing personal attendance records, submitting leave applications, downloading payslips, and logging customer visits.',
+        text: 'Specialized mobile-friendly screens allow employees to view attendance history, submit leave applications, download payslips, and check in during client visits.',
         dualImages: [
           {
             image: '/attendance-manual/fig1_3_employee_login.png',
@@ -104,9 +100,9 @@ export const MANUAL_SECTIONS = [
       type: 'security',
       title: 'Enterprise Authentication Highlights',
       bullets: [
-        'Password Security: Cryptographically salted PBKDF2/SHA-256 hashes prevent brute force attacks.',
-        'Persistent Session Tokens: Unbreakable multi-tab remember tokens survive browser restarts safely.',
-        'Role Segregation: Strict middleware guarantees employees cannot escalate privileges to administrative routes.'
+        'Protected Passwords: Industry-standard security encryption protects all user accounts from unauthorized access.',
+        'Seamless Sessions: Reliable, secure session tokens keep you signed in safely without annoying interruptions.',
+        'Role Segregation: Staff only access their personal records, keeping managerial tools and payroll data private.'
       ]
     }
   },
@@ -161,30 +157,30 @@ export const MANUAL_SECTIONS = [
     caption: 'Figure 3.1: AI Face Recognition Kiosk Terminal with live camera feed, target reticle, and punch status',
     features: [
       {
-        title: 'Real-Time Face Detection & Alignment',
-        desc: 'The neural network localizes faces within the frame, applies affine transformations for eye-nose alignment, and normalizes lighting gradients.'
+        title: 'Instant Face Detection & Alignment',
+        desc: 'Detects employee faces instantly as they approach the screen, adjusting automatically to room lighting.'
       },
       {
-        title: '128-Dimensional Vector Embeddings',
-        desc: 'Deep convolutional networks project facial features into a 128D mathematical space. Euclidean distance comparison identifies enrolled staff in under 400 milliseconds.'
+        title: 'High-Accuracy Identity Matching',
+        desc: 'Recognizes registered staff in less than a second, eliminating slow queues during peak shift changes.'
       },
       {
-        title: 'Anti-Spoofing & Liveness Guard',
-        desc: 'Rejects static paper photos, tablet screen replays, and non-living representations to ensure authentic physical presence.'
+        title: 'Photo & Video Fraud Prevention',
+        desc: 'Detects and rejects static paper photos or phone screen replays to ensure only real, physically present staff can punch.'
       },
       {
-        title: 'Auto-Mode Directional Intelligence',
-        desc: 'Intelligently toggles between Punch-IN and Punch-OUT based on existing daily logs, while allowing manual mode override.'
+        title: 'Automatic IN / OUT Direction',
+        desc: 'Intelligently determines whether an employee is clocking in or clocking out based on their previous punch of the day.'
       },
       {
-        title: 'Audio-Visual Instant Confirmation',
-        desc: 'Emits high-clarity synthesized chimes and displays full-screen green verification cards with employee name and exact punch timestamp.'
+        title: 'Instant Audio & Visual Confirmation',
+        desc: 'Plays a clear sound chime and shows a green success card on-screen with the employee’s name and time.'
       }
     ],
     callout: {
       type: 'bestpractice',
       title: 'Kiosk Operational Best Practice',
-      text: 'Mount kiosk tablets at 5.0 to 5.5 feet height at entrance turnstiles or reception lobbies. Ensure indirect, consistent lighting. In environments with dynamic sunlight, ARGUS automated contrast normalization ensures consistent 99.4% first-scan accuracy.'
+      text: 'Place tablet kiosks at comfortable eye level (about 5 feet) near entrance doors or reception areas with standard indoor lighting for fast, effortless scanning.'
     },
     hasSimulator: true
   },
@@ -448,35 +444,35 @@ export const MANUAL_SECTIONS = [
   {
     id: 'section-12',
     number: '12',
-    title: 'Security Specifications & Technical Architecture',
-    shortTitle: 'Security Specs',
-    badge: 'Architecture & SLA',
-    summary: 'The ARGUS architecture is engineered for high reliability, data privacy, and minimal maintenance across diverse enterprise environments.',
+    title: 'Data Privacy, Security & Platform Reliability',
+    shortTitle: 'Security & Privacy',
+    badge: 'Enterprise Security',
+    summary: 'The ARGUS platform is built with bank-grade security and strict data privacy, ensuring reliable daily performance for your company.',
     securitySpecs: [
       {
-        domain: 'Biometric Security',
-        standard: 'Non-reversible 128D mathematical vectors',
-        benefit: 'Original face photos cannot be reconstructed from vectors, ensuring strict privacy.'
+        domain: 'Biometric Privacy',
+        standard: 'Encrypted Biometric Signatures',
+        benefit: 'Raw face photos are never stored or reconstructible, guaranteeing employee personal privacy.'
       },
       {
-        domain: 'Authentication',
-        standard: 'PBKDF2/SHA-256 + Google Workspace OAuth',
-        benefit: 'Enterprise-grade protection against brute force and session hijacking.'
+        domain: 'Account Security',
+        standard: 'Encrypted Logins & Google SSO',
+        benefit: 'Strong access controls protect managerial settings and salary records from unauthorized users.'
       },
       {
-        domain: 'Geofencing Engine',
-        standard: 'Haversine spherical trigonometry ±5m',
-        benefit: 'Prevents proxy punches from outside verified workplace perimeters.'
+        domain: 'Workplace Geofencing',
+        standard: 'Precise GPS Distance Verification',
+        benefit: 'Ensures staff punches only register when they are physically at their assigned work site.'
       },
       {
-        domain: 'Cross-Platform',
-        standard: 'Web, Android APK, Windows Executable (.exe)',
-        benefit: 'Deploy effortlessly on existing corporate hardware without lock-in.'
+        domain: 'Hardware Flexibility',
+        standard: 'Web Browser, Windows PC, Android & iPhone',
+        benefit: 'Deploy effortlessly on existing company laptops, tablets, or phones without lock-in.'
       },
       {
-        domain: 'Database Durability',
-        standard: 'MongoDB Atlas Multi-AZ Replication',
-        benefit: '99.99% uptime with automated point-in-time backup snapshots.'
+        domain: 'Cloud Reliability & Backup',
+        standard: 'Continuous Cloud Backups with 99.9% Uptime',
+        benefit: 'Your company attendance and payroll records are always backed up and available anytime.'
       }
     ],
     contactInfo: {
@@ -484,7 +480,7 @@ export const MANUAL_SECTIONS = [
       location: 'Headquarters: Coimbatore, Tamil Nadu, India',
       web: 'www.argussoftwares.com',
       email: 'technologiesargus@gmail.com',
-      copyright: '© 2026 ARGUS CNC™. All Rights Reserved. This technical feature guide is proprietary documentation.'
+      copyright: '© 2026 ARGUS CNC™. All Rights Reserved. Enterprise Operating Manual.'
     }
   }
 ];

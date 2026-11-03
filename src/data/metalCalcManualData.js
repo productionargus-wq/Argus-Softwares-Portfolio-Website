@@ -1,12 +1,9 @@
 export const METALCALC_MANUAL_METADATA = {
   title: 'Metal Calculator & Quotation Suite',
-  subtitle: 'Complete System User Manual, Technical Specifications & Visual Feature Guide',
+  subtitle: 'Complete System User Manual, Feature Guide & Operating Instructions',
   tagline: 'High-precision production-grade estimation and commercial quotation platform for CNC machine shops, precision fabricators, toolmakers, and metal component manufacturers.',
-  version: 'Version 7.5.0 (Full-Stack Enterprise Edition)',
-  organisation: 'Argus Technologies (GSTIN: 33CZEPS8675J1ZN)',
-  scope: 'Comprehensive feature-by-feature visual walkthrough with high-resolution system screenshots.',
-  releaseDate: 'October 2026',
   publisher: 'ARGUS TECHNOLOGIES (Coimbatore, Tamil Nadu, India)',
+  releaseDate: 'October 2026',
   heroImage: '/metalcalc-manual/mod02_calculator.png',
   heroCaption: 'Figure 2: Argus Metal Calculator & Vector CAD Blueprint Engine',
   pdfDownloadUrl: '/metalcalc-manual/argus-metalcalc-manual-v7.5.0.pdf'
@@ -17,10 +14,10 @@ export const METALCALC_EXECUTIVE_SUMMARY = {
   highlights: [
     { title: '8 Geometric Profiles', desc: 'Round, pipe, square, hex, flat bar, tube, ring, and sheet metal.' },
     { title: 'Pre-Calibrated Densities', desc: 'Mild steel, stainless 304/316, aluminium, brass, copper, and tool steels.' },
-    { title: 'Gemini AI Vision', desc: '2D blueprint feature extraction, cycle times, and operational sequencing.' },
-    { title: 'Statutory GST Engine', desc: 'Appyflow API verification with automatic CGST, SGST, and IGST rules.' },
-    { title: 'Direct Email Dispatch', desc: 'Integrated Resend transactional email API with customer delivery logs.' },
-    { title: 'Desktop Executable', desc: 'Standalone single-file MetalCalculator.exe bundling Node 20 & WebView2.' }
+    { title: 'AI Blueprint Estimation', desc: '2D blueprint feature extraction, cycle times, and operational sequencing.' },
+    { title: 'Statutory GST Engine', desc: 'Automatic calculation of CGST, SGST, and IGST rules based on client location.' },
+    { title: 'Direct Email Quotations', desc: 'Send professional PDF quotes directly to customers with delivery tracking.' },
+    { title: 'Offline Desktop App', desc: 'Fast, standalone desktop app that works reliably even without internet.' }
   ]
 };
 
@@ -283,14 +280,14 @@ export const METALCALC_MODULES = [
 ];
 
 export const TECHNICAL_SPECIFICATIONS = [
-  { spec: 'Application Architecture', benchmark: 'Full-Stack Node.js Express Backend, Vanilla JS Responsive SPA, PyWebView Desktop Wrapper' },
-  { spec: 'Database Layer', benchmark: 'MongoDB Atlas Enterprise Cloud Cluster with automatic failover, cold-start pre-warming, and local caching' },
-  { spec: 'AI Multimodal Model', benchmark: 'Google Gemini AI Vision API for 2D engineering drawing cycle time and tooling parameter extraction' },
-  { spec: 'Commodity Pricing API', benchmark: 'Metals-API Daily Real-Time Commodity Feed for Carbon Steel, Stainless Steel, Aluminium, Copper, Brass' },
-  { spec: 'GST Integration', benchmark: 'Appyflow Indian Goods & Services Tax (GST) Verification API for automated trade name and address resolution' },
-  { spec: 'Email Delivery Service', benchmark: 'Resend Transactional Email API for direct PDF attachment dispatch with deliverability logging' },
-  { spec: 'Desktop Runtime', benchmark: 'Standalone single-file executable (MetalCalculator.exe) bundling Node 20 runtime and EdgeChromium WebView2' },
-  { spec: 'Supported Platforms', benchmark: 'Windows 10/11 Desktop, macOS, Linux, and Modern Web Browsers (Chrome, Edge, Safari, Firefox)' }
+  { spec: 'Weight Estimation Formulas', benchmark: 'High-precision volume algorithms covering 8 standard mill shapes & structural profiles' },
+  { spec: 'Pre-loaded Metal Library', benchmark: 'Accurate densities for Mild Steel, SS 304/316, Aluminium, Brass, Copper & Tool Steels' },
+  { spec: 'AI Blueprint Analysis', benchmark: 'Automated 2D engineering drawing feature detection and machining operation estimation' },
+  { spec: 'Raw Material Costing', benchmark: 'Calculates billet gross mass, component finished weight, and scrap metal salvage recovery' },
+  { spec: 'Statutory GST Verification', benchmark: 'Instant verification of trade name and state tax rules (CGST, SGST, IGST) from GSTIN' },
+  { spec: 'Quotation Generation', benchmark: 'Instant branded PDF quotations with corporate logo, banking details, and authorized signature' },
+  { spec: 'Offline Desktop Application', benchmark: 'Runs completely offline on your workshop PC without requiring constant internet access' },
+  { spec: 'Platform Availability', benchmark: 'Windows 10/11 Desktop (.exe), macOS (.dmg), Android (.apk), and Live Web Browser' }
 ];
 
 export const DIVISION_INFO = {

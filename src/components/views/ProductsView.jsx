@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calculator, Users, Database, Download, ExternalLink, Globe } from 'lucide-react';
+import { Calculator, Users, Database, Download } from 'lucide-react';
 import HeroSection from './HeroSection';
 import ProductDownloadModal from './ProductDownloadModal';
 
@@ -45,32 +45,19 @@ export default function ProductsView({ onNavigate, showToast }) {
           </div>
           <ul className="bullets">
             <li><i>•</i><span>Fast & accurate machine shop calculations</span></li>
-            <li><i>•</i><span>8 geometric profiles, CAD SVG & Metals-API</span></li>
+            <li><i>•</i><span>8 geometric profiles & dynamic CAD preview</span></li>
             <li><i>•</i><span>Desktop (.exe, .dmg) & Mobile (.apk, .ipa)</span></li>
           </ul>
 
-          <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', alignItems: 'center' }}>
-            <button
-              className="btn"
-              style={{ flex: 1, background: 'linear-gradient(180deg, var(--orange), #d94800)' }}
-              onClick={(e) => openDownloadModal('metalcalc', e)}
-              title="Download MetalCalc for Windows, macOS, Android, iOS"
-            >
-              <Download style={{ width: '16px', height: '16px' }} />
-              <span>Download</span>
-            </button>
-            <a
-              href="https://metalcalcquote.arguscnc.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn secondary"
-              style={{ padding: '0 10px', flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-              onClick={(e) => e.stopPropagation()}
-              title="Launch MetalCalc Live Online Web App in a new tab"
-            >
-              <Globe style={{ width: '16px', height: '16px', color: 'var(--orange)' }} />
-            </a>
-          </div>
+          <button
+            className="btn"
+            style={{ width: '100%', marginTop: 'auto', background: 'linear-gradient(180deg, var(--orange), #d94800)' }}
+            onClick={(e) => openDownloadModal('metalcalc', e)}
+            title="Download MetalCalc for Windows, macOS, Android, iOS"
+          >
+            <Download style={{ width: '16px', height: '16px' }} />
+            <span>Download</span>
+          </button>
           <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
 
@@ -105,33 +92,20 @@ export default function ProductsView({ onNavigate, showToast }) {
             </div>
           </div>
           <ul className="bullets">
-            <li><i>•</i><span>128D Face Biometrics & GPS Geofencing</span></li>
+            <li><i>•</i><span>AI Face Recognition & GPS Geofencing</span></li>
             <li><i>•</i><span>Automated payroll, shifts & report generation</span></li>
             <li><i>•</i><span>Desktop Console (.exe) & Mobile Punch (.apk)</span></li>
           </ul>
 
-          <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', alignItems: 'center' }}>
-            <button
-              className="btn"
-              style={{ flex: 1, background: 'linear-gradient(180deg, var(--green), #00936b)' }}
-              onClick={(e) => openDownloadModal('attendance', e)}
-              title="Download Attendance Intelligence for Windows, macOS, Android, iOS"
-            >
-              <Download style={{ width: '16px', height: '16px' }} />
-              <span>Download</span>
-            </button>
-            <a
-              href="https://argusattendanceintelligence.argussoftwares.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn secondary"
-              style={{ padding: '0 10px', flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-              onClick={(e) => e.stopPropagation()}
-              title="Launch AI Attendance Live Online Web App in a new tab"
-            >
-              <Globe style={{ width: '16px', height: '16px', color: 'var(--green)' }} />
-            </a>
-          </div>
+          <button
+            className="btn"
+            style={{ width: '100%', marginTop: 'auto', background: 'linear-gradient(180deg, var(--green), #00936b)' }}
+            onClick={(e) => openDownloadModal('attendance', e)}
+            title="Download Attendance Intelligence for Windows, macOS, Android, iOS"
+          >
+            <Download style={{ width: '16px', height: '16px' }} />
+            <span>Download</span>
+          </button>
           <div className="small">Click card to open full interactive feature guide & manual</div>
         </article>
 
@@ -167,32 +141,19 @@ export default function ProductsView({ onNavigate, showToast }) {
           </div>
           <ul className="bullets">
             <li><i>•</i><span>Inventory & warehouse live stock control</span></li>
-            <li><i>•</i><span>Server & Workstation install (.exe, .msi)</span></li>
+            <li><i>•</i><span>Complete sales, purchases & billing suite</span></li>
             <li><i>•</i><span>Shop-Floor Barcode Scanner (.apk, .ipa)</span></li>
           </ul>
 
-          <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
-            <button
-              className="btn"
-              style={{ flex: 1, background: 'linear-gradient(180deg, var(--purple), #5e1cb0)' }}
-              onClick={(e) => openDownloadModal('erp', e)}
-              title="View download files for Windows, Mac, Android, iOS"
-            >
-              <Download style={{ width: '16px', height: '16px' }} />
-              <span>Download</span>
-            </button>
-            <button
-              className="btn secondary"
-              style={{ padding: '0 12px' }}
-              onClick={(e) => {
-                e.stopPropagation();
-                onNavigate('erp');
-              }}
-              title="Explore live Business Intelligence operations dashboard"
-            >
-              <ExternalLink style={{ width: '16px', height: '16px' }} />
-            </button>
-          </div>
+          <button
+            className="btn"
+            style={{ width: '100%', marginTop: 'auto', background: 'linear-gradient(180deg, var(--purple), #5e1cb0)' }}
+            onClick={(e) => openDownloadModal('erp', e)}
+            title="View download files for Windows, Mac, Android, iOS"
+          >
+            <Download style={{ width: '16px', height: '16px' }} />
+            <span>Download</span>
+          </button>
           <div className="small">Click to view .exe, .dmg, .apk packages</div>
         </article>
       </div>

@@ -193,8 +193,8 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
             </button>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                <h3 className="modal-title">Argus Attendance Intelligence</h3>
-                <span className="ver">v2.0.0</span>
+                <h3 className="modal-title">{productData.title}</h3>
+                <span className="ver">{productData.version}</span>
 
                 {isFetchingRelease && (
                   <RefreshCw style={{ width: '13px', height: '13px', color: '#64748b', animation: 'spin 1s linear infinite' }} />
@@ -230,17 +230,6 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 <Globe style={{ width: '14px', height: '14px' }} />
                 <span>Launch Web App</span>
                 <ExternalLink style={{ width: '12px', height: '12px', opacity: 0.85 }} />
-              </a>
-            )}
-            {releaseUrl && (
-              <a
-                href={releaseUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="github-release-btn"
-                title="View full release and source on GitHub"
-              >
-                <ExternalLink style={{ width: '13px', height: '13px' }} />
               </a>
             )}
             <button className="modal-close-icon" onClick={onClose} aria-label="Close modal">

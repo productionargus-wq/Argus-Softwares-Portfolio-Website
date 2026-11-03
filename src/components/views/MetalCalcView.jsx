@@ -205,20 +205,8 @@ export default function MetalCalcView({ onNavigate, showToast }) {
 
         <p className="manual-tagline">{METALCALC_MANUAL_METADATA.tagline}</p>
 
-        {/* Technical Metadata Grid */}
+        {/* Metadata Banner */}
         <div className="manual-meta-grid">
-          <div className="manual-meta-item">
-            <span className="manual-meta-label">System Release</span>
-            <span className="manual-meta-value">{METALCALC_MANUAL_METADATA.version}</span>
-          </div>
-          <div className="manual-meta-item">
-            <span className="manual-meta-label">Deployed Organisation</span>
-            <span className="manual-meta-value">{METALCALC_MANUAL_METADATA.organisation}</span>
-          </div>
-          <div className="manual-meta-item">
-            <span className="manual-meta-label">Scope</span>
-            <span className="manual-meta-value">{METALCALC_MANUAL_METADATA.scope}</span>
-          </div>
           <div className="manual-meta-item">
             <span className="manual-meta-label">Publisher</span>
             <span className="manual-meta-value">{METALCALC_MANUAL_METADATA.publisher}</span>
@@ -226,10 +214,6 @@ export default function MetalCalcView({ onNavigate, showToast }) {
           <div className="manual-meta-item">
             <span className="manual-meta-label">Release Date</span>
             <span className="manual-meta-value">{METALCALC_MANUAL_METADATA.releaseDate}</span>
-          </div>
-          <div className="manual-meta-item">
-            <span className="manual-meta-label">Target Industry</span>
-            <span className="manual-meta-value">CNC Machine Shops & Precision Fabricators</span>
           </div>
         </div>
 
@@ -289,7 +273,7 @@ export default function MetalCalcView({ onNavigate, showToast }) {
             onClick={() => scrollToSection('tech-specs')}
           >
             <Laptop style={{ width: '14px', height: '14px' }} />
-            <span>Specs & Arch</span>
+            <span>Key Highlights</span>
           </button>
         </div>
         <div className="manual-progress-bar">
@@ -548,22 +532,22 @@ export default function MetalCalcView({ onNavigate, showToast }) {
               14
             </div>
             <div className="manual-sec-titles">
-              <span className="manual-sec-tag">Technical Benchmark</span>
-              <h2>System Specifications & Architecture Summary</h2>
+              <span className="manual-sec-tag">Operational Highlights</span>
+              <h2>Customer Benefits & Reliability Guarantees</h2>
             </div>
           </div>
         </div>
 
         <p className="manual-sec-summary">
-          The Argus Quotation Suite & Metal Calculator delivers an end-to-end digital workflow that bridges the gap between workshop CAD engineering and front-office commercial sales. By integrating geometric CAD volume calculations, daily live commodity market rates, AI-driven cycle time estimation, multi-entity branding, and seamless PDF quotation generation, the suite empowers modern CNC job shops and precision manufacturers to win more tenders, eliminate estimation errors, and accelerate cash flow.
+          The Argus Quotation Suite & Metal Calculator delivers a complete digital workflow that connects machine shop workshop calculations with front-office commercial sales. By integrating fast metal volume formulas, live metal pricing, AI-assisted blueprint estimation, custom branding, and instant PDF quotation generation, the suite helps precision machine shops quote faster, eliminate estimation errors, and win more contracts.
         </p>
 
         <div className="manual-table-container">
           <table className="manual-table">
             <thead>
               <tr>
-                <th style={{ width: '30%' }}>Technical Specification</th>
-                <th style={{ width: '70%' }}>Enterprise Configuration & Performance Benchmark</th>
+                <th style={{ width: '30%' }}>System Capability</th>
+                <th style={{ width: '70%' }}>Operational Advantage & Guarantee</th>
               </tr>
             </thead>
             <tbody>
