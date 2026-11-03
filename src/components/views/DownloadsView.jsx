@@ -116,7 +116,7 @@ export default function DownloadsView({ onNavigate, showToast }) {
                         {prod.title}
                       </h3>
                       <span className="ver" style={{ fontSize: '11px', padding: '2px 8px' }}>
-                        {prod.version}
+                        {prod.id === 'attendance' ? 'v2.0.0' : prod.version}
                       </span>
                     </div>
                     <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#64748b' }}>
