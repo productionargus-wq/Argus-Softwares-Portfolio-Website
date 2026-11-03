@@ -56,7 +56,7 @@ export default function ErpView({ onNavigate }) {
           <div>
             <h3 style={{ margin: 0, fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <TrendingUp style={{ width: '20px', height: '20px', color: 'var(--purple)' }} />
-              ARGUS Business Intelligence Operational Control Dashboard
+              Argus Business Intelligence Operational Control Dashboard
             </h3>
             <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#64748b' }}>
               Connected plant workflow preview across shop-floor operations.

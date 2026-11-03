@@ -142,8 +142,8 @@ export default function ContactView({ showToast }) {
                 onChange={handleChange}
               >
                 <option value="MetalCalc">MetalCalc (Weight & Costing)</option>
-                <option value="ARGUS Attendance">Argus Attendance Intelligence</option>
-                <option value="ARGUS Business Intelligence">ARGUS Business Intelligence</option>
+                <option value="Argus Attendance">Argus Attendance Intelligence</option>
+                <option value="Argus Business Intelligence">Argus Business Intelligence</option>
                 <option value="Support">Product Support & Maintenance</option>
                 <option value="Custom software">Custom Manufacturing Software</option>
                 <option value="Other enquiry">General Commercial Enquiry</option>

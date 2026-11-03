@@ -37,7 +37,7 @@ const TESTIMONIALS_DATA = [
     location: 'Pune, MH',
     product: 'Business Intelligence',
     rating: 5,
-    quote: 'Complete inventory visibility across raw steel bars, machine shop work-in-progress, and finished dispatch. ARGUS Business Intelligence brought true operational transparency across our three plant locations.',
+    quote: 'Complete inventory visibility across raw steel bars, machine shop work-in-progress, and finished dispatch. Argus Business Intelligence brought true operational transparency across our three plant locations.',
     metric: '₹2.4Cr inventory managed',
     metricDetail: 'Real-time multi-branch stock reconciliation',
     category: 'Business Intelligence'
