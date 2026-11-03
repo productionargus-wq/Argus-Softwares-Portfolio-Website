@@ -106,8 +106,8 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
 
           setProductData((prev) => ({
             ...prev,
-            version: latest.tag_name || prev.version,
-            releaseTag: latest.tag_name || prev.releaseTag,
+            version: productKey === 'attendance' ? 'v2.0.0' : (latest.tag_name || prev.version),
+            releaseTag: productKey === 'attendance' ? 'v2.0.0' : (latest.tag_name || prev.releaseTag),
             releaseDate: formattedDate || prev.releaseDate,
             platforms: updatedPlatforms
           }));
@@ -194,7 +194,9 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                 <h3 className="modal-title">{productData.title}</h3>
-                <span className="ver">{productData.version}</span>
+                <span className="ver">
+                  {productKey === 'attendance' ? 'v2.0.0' : productData.version}
+                </span>
 
                 {isFetchingRelease && (
                   <RefreshCw style={{ width: '13px', height: '13px', color: '#64748b', animation: 'spin 1s linear infinite' }} />

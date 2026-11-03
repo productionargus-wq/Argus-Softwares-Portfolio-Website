@@ -261,7 +261,7 @@ export default function AttendanceView({ onNavigate, showToast }) {
         </div>
 
         <p className="manual-sec-summary">
-          The <strong>ARGUS Attendance Intelligence</strong> is an easy-to-use workforce management platform designed to automate staff attendance, leave governance, and end-to-end payroll computation without requiring expensive biometric hardware. Utilizing smart facial recognition and secure GPS tracking, the system converts standard webcams, tablets, and smartphones into quick clock-in terminals with built-in fraud prevention.
+          The <strong>Argus Attendance Intelligence</strong> is an easy-to-use workforce management platform designed to automate staff attendance, leave governance, and end-to-end payroll computation without requiring expensive biometric hardware. Utilizing smart facial recognition and secure GPS tracking, the system converts standard webcams, tablets, and smartphones into quick clock-in terminals with built-in fraud prevention.
         </p>
 
         {/* 5 Operational Advantages */}
