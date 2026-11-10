@@ -1220,7 +1220,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
   pointer-events: none;
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
-  z-index: 50;
+  z-index: 100000;
   font-size: 13.5px;
   font-weight: 600;
   display: flex;
@@ -1758,64 +1758,6 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
   font-weight: 500;
 }
 
-.live-sync-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 10px;
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #065f46;
-  margin-left: 6px;
-}
-
-.live-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
-  animation: pulseDot 2s infinite ease-in-out;
-}
-
-@keyframes pulseDot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.3); opacity: 0.6; }
-}
-
-.github-release-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #334155;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.github-release-btn:hover {
-  background: #0f172a;
-  color: #ffffff;
-  border-color: #0f172a;
-}
-
-.cdn-note {
-  font-size: 11.5px;
-  color: #64748b;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 2px;
-}
-
 .modal-close-icon {
   width: 36px;
   height: 36px;
@@ -1959,17 +1901,6 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
   align-items: flex-end;
   gap: 6px;
   flex-shrink: 0;
-}
-
-.os-direct-link {
-  font-size: 11px;
-  color: #64748b;
-  text-decoration: underline;
-  transition: color 0.15s ease;
-}
-
-.os-direct-link:hover {
-  color: var(--orange);
 }
 
 .download-showcase-card {
@@ -2206,9 +2137,6 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
   .os-card-actions .download-action-btn {
     width: 100%;
     justify-content: center;
-  }
-  .os-direct-link {
-    text-align: center;
   }
   .download-showcase-card {
     padding: 14px;

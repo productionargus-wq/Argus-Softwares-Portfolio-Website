@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Download, Monitor, Smartphone, Apple, Terminal, X, ArrowLeft, ExternalLink, RefreshCw, Globe } from 'lucide-react';
+import { Download, Monitor, Smartphone, Apple, Terminal, X, ArrowLeft, ExternalLink, Globe } from 'lucide-react';
 import { PRODUCTS_DOWNLOAD_DATA } from '../../data/productsDownloadData';
+import { triggerLocalDownload } from '../../utils/downloadHelper';
 
 const platformIconMap = {
   windows: <Monitor style={{ width: '20px', height: '20px' }} />,
@@ -11,121 +12,8 @@ const platformIconMap = {
   linux: <Terminal style={{ width: '20px', height: '20px' }} />
 };
 
-const GITHUB_REPO_MAP = {
-  metalcalc: 'productionargus-wq/Metal-Calculator-And-Quotation-Suite',
-  attendance: 'productionargus-wq/Simple-AI-Attendance'
-};
-
 export default function ProductDownloadModal({ productKey, onClose, showToast }) {
-  const baseProduct = PRODUCTS_DOWNLOAD_DATA[productKey] || PRODUCTS_DOWNLOAD_DATA.metalcalc;
-  const [productData, setProductData] = useState(baseProduct);
-  const [isLiveSync, setIsLiveSync] = useState(false);
-  const repoName = GITHUB_REPO_MAP[productKey];
-  const [isFetchingRelease, setIsFetchingRelease] = useState(Boolean(repoName));
-  const [releaseUrl, setReleaseUrl] = useState(
-    repoName ? `https://github.com/${repoName}/releases/latest` : ''
-  );
-
-  // Auto-fetch latest release from GitHub API dynamically
-  useEffect(() => {
-    let isMounted = true;
-    if (repoName) {
-      fetch(`https://api.github.com/repos/${repoName}/releases/latest`)
-        .then((res) => {
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res.json();
-        })
-        .then((latest) => {
-          if (!isMounted || !latest) return;
-          setReleaseUrl(latest.html_url || `https://github.com/${repoName}/releases/latest`);
-
-          // Dynamically map uploaded GitHub release assets to corresponding platform packages
-          const updatedPlatforms = { ...baseProduct.platforms };
-
-          if (Array.isArray(latest.assets)) {
-            latest.assets.forEach((asset) => {
-              const nameLower = (asset.name || '').toLowerCase();
-              const sizeFormatted = asset.size < 1024 * 1024
-                ? (asset.size / 1024).toFixed(0) + ' KB'
-                : (asset.size / (1024 * 1024)).toFixed(1) + ' MB';
-              const sha = asset.digest ? asset.digest.replace('sha256:', '') : null;
-
-              // Windows Installer (only single official .exe)
-              if (nameLower.endsWith('.exe') && updatedPlatforms.windows) {
-                if (nameLower.includes('setup') || !updatedPlatforms.windows.downloadUrl) {
-                  updatedPlatforms.windows = {
-                    ...updatedPlatforms.windows,
-                    fileName: asset.name,
-                    fileSize: sizeFormatted,
-                    downloadUrl: asset.browser_download_url,
-                    sha256: sha || updatedPlatforms.windows.sha256
-                  };
-                }
-              }
-
-              // macOS DMG Installer
-              if (nameLower.endsWith('.dmg') && updatedPlatforms.macos) {
-                updatedPlatforms.macos = {
-                  ...updatedPlatforms.macos,
-                  fileName: asset.name,
-                  fileSize: sizeFormatted,
-                  downloadUrl: asset.browser_download_url,
-                  sha256: sha || updatedPlatforms.macos.sha256
-                };
-              }
-
-              // Android APK (skip debug APK)
-              if (nameLower.endsWith('.apk') && !nameLower.includes('debug') && updatedPlatforms.android) {
-                updatedPlatforms.android = {
-                  ...updatedPlatforms.android,
-                  fileName: asset.name,
-                  fileSize: sizeFormatted,
-                  downloadUrl: asset.browser_download_url,
-                  sha256: sha || updatedPlatforms.android.sha256
-                };
-              }
-
-              // iOS IPA
-              if (nameLower.endsWith('.ipa') && updatedPlatforms.ios) {
-                updatedPlatforms.ios = {
-                  ...updatedPlatforms.ios,
-                  fileName: asset.name,
-                  fileSize: sizeFormatted,
-                  downloadUrl: asset.browser_download_url,
-                  sha256: sha || updatedPlatforms.ios.sha256
-                };
-              }
-            });
-          }
-
-          const formattedDate = new Date(latest.published_at || latest.created_at).toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric'
-          });
-
-          setProductData((prev) => ({
-            ...prev,
-            version: productKey === 'attendance' ? 'v2.0.0' : (latest.tag_name || prev.version),
-            releaseTag: productKey === 'attendance' ? 'v2.0.0' : (latest.tag_name || prev.releaseTag),
-            releaseDate: formattedDate || prev.releaseDate,
-            platforms: updatedPlatforms
-          }));
-          setIsLiveSync(true);
-        })
-        .catch(() => {
-          // Fall back gracefully to static bundled data in productsDownloadData.js
-          setIsLiveSync(false);
-        })
-        .finally(() => {
-          if (isMounted) setIsFetchingRelease(false);
-        });
-    }
-
-    return () => {
-      isMounted = false;
-    };
-  }, [productKey, baseProduct, repoName]);
+  const productData = PRODUCTS_DOWNLOAD_DATA[productKey] || PRODUCTS_DOWNLOAD_DATA.metalcalc;
 
   // Close on Escape key & lock body scroll
   useEffect(() => {
@@ -143,42 +31,8 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
     };
   }, [onClose]);
 
-  const handleTriggerDownload = (fileName, customUrl, pkg) => {
-    const downloadUrl = customUrl || pkg?.downloadUrl;
-    // If download URL is available (local path or external CDN), trigger direct download
-    if (downloadUrl) {
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = fileName;
-      if (downloadUrl.startsWith('http')) {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-      }
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      showToast?.(`Starting direct download: ${fileName}`);
-      return;
-    }
-
-    // Fallback simulated file if offline or custom preview
-    const dummyBlob = new Blob(
-      [
-        `ARGUS SOFTWARES - Official Release Package\n\nProduct: ${productData.title}\nVersion: ${productData.version}\nFile: ${fileName}\nPlatform: ${pkg?.osTitle || 'OS Package'}\nRelease Date: ${productData.releaseDate}\n\nThank you for downloading from ARGUS Softwares official distribution.`
-      ],
-      { type: 'application/octet-stream' }
-    );
-
-    const blobUrl = URL.createObjectURL(dummyBlob);
-    const link = document.createElement('a');
-    link.href = blobUrl;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setTimeout(() => URL.revokeObjectURL(blobUrl), 100);
-
-    showToast?.(`Downloading ${fileName} (${pkg?.fileSize || ''})`);
+  const handleTriggerDownload = (pkg) => {
+    triggerLocalDownload(pkg.fileName, pkg.downloadUrl, showToast);
   };
 
   return createPortal(
@@ -197,10 +51,6 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 <span className="ver">
                   {productKey === 'attendance' ? 'v2.0.0' : productData.version}
                 </span>
-
-                {isFetchingRelease && (
-                  <RefreshCw style={{ width: '13px', height: '13px', color: '#64748b', animation: 'spin 1s linear infinite' }} />
-                )}
               </div>
               <p className="modal-subtitle">{productData.tagline}</p>
             </div>
@@ -338,23 +188,12 @@ export default function ProductDownloadModal({ productKey, onClose, showToast })
                 <div className="os-card-actions">
                   <button
                     className="btn download-action-btn"
-                    onClick={() => handleTriggerDownload(pkg.fileName, pkg.downloadUrl, pkg)}
+                    onClick={() => handleTriggerDownload(pkg)}
                     title={`Download for ${pkg.name}`}
                   >
                     <Download style={{ width: '16px', height: '16px' }} />
                     <span>Download for {pkg.name}</span>
                   </button>
-                  {pkg.downloadUrl && (
-                    <a
-                      href={pkg.downloadUrl}
-                      download={pkg.fileName}
-                      target={pkg.downloadUrl.startsWith('http') ? '_blank' : undefined}
-                      rel={pkg.downloadUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="os-direct-link"
-                    >
-
-                    </a>
-                  )}
                 </div>
               </div>
             ))}

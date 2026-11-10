@@ -2,6 +2,7 @@ import React from 'react';
 import { Download, Calculator, Users, Database, Globe, Monitor, Apple, Smartphone, Terminal, ExternalLink, ArrowRight } from 'lucide-react';
 import HeroSection from './HeroSection';
 import { PRODUCTS_DOWNLOAD_DATA } from '../../data/productsDownloadData';
+import { triggerLocalDownload } from '../../utils/downloadHelper';
 
 const platformIconMap = {
   windows: <Monitor style={{ width: '20px', height: '20px' }} />,
@@ -53,24 +54,6 @@ export default function DownloadsView({ onNavigate, showToast }) {
     PRODUCTS_DOWNLOAD_DATA.attendance,
     PRODUCTS_DOWNLOAD_DATA.erp
   ].filter(Boolean);
-
-  const handleDownloadFile = (fileName, downloadUrl) => {
-    if (downloadUrl) {
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = fileName;
-      if (downloadUrl.startsWith('http')) {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-      }
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      showToast?.(`Starting direct download: ${fileName}`);
-    } else {
-      showToast?.(`Download package for ${fileName} will be available shortly.`);
-    }
-  };
 
   return (
     <>
@@ -225,7 +208,7 @@ export default function DownloadsView({ onNavigate, showToast }) {
                           justifyContent: 'center',
                           gap: '6px'
                         }}
-                        onClick={() => handleDownloadFile(pkg.fileName, pkg.downloadUrl)}
+                        onClick={() => triggerLocalDownload(pkg.fileName, pkg.downloadUrl, showToast)}
                         title={`Download ${pkg.fileName}`}
                       >
                         <Download style={{ width: '15px', height: '15px' }} />

@@ -25,7 +25,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.exe',
         fileName: 'MetalCalculator-Setup-Windows.exe',
         fileSize: '44.7 MB',
-        downloadUrl: 'https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/download/v1.0.1/MetalCalculator-Setup-Windows.exe',
+        downloadUrl: '/downloads/metalcalc/MetalCalculator-Setup-Windows.exe',
         requirements: 'Windows 11 / 10 (64-bit), 4 GB RAM, 100 MB disk space',
         sha256: 'b3e0290bd77d58ae230330a8343d6099e24562d1ea72b08777d7e117a9a9fd63',
         isPrimary: true
@@ -37,7 +37,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.dmg',
         fileName: 'MetalCalculator-macOS.dmg',
         fileSize: '44.3 MB',
-        downloadUrl: 'https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/download/v1.0.1/MetalCalculator-macOS.dmg',
+        downloadUrl: '/downloads/metalcalc/MetalCalculator-macOS.dmg',
         requirements: 'macOS 12.0 Monterey or later (Universal binary)',
         sha256: '5d0d9679b89c11c98cd34052ec6ef6994be00b2a9b5874315196164eda6f2dd6'
       },
@@ -48,7 +48,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.apk',
         fileName: 'MetalCalculator-Android-Release.apk',
         fileSize: '6.05 MB',
-        downloadUrl: 'https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/download/v1.0.1/MetalCalculator-Android-Release.apk',
+        downloadUrl: '/downloads/metalcalc/MetalCalculator-Android-Release.apk',
         requirements: 'Android 8.0 (Oreo) or later',
         sha256: '41f9aec853b3a2d2047db96168e3a4dd6d366c8f802e7e79a237e6e7c47e35d9'
       },
@@ -59,7 +59,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.ipa',
         fileName: 'MetalCalculator-iOS.ipa',
         fileSize: '3.87 MB',
-        downloadUrl: 'https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/latest/download/MetalCalculator-iOS.ipa',
+        downloadUrl: '/downloads/metalcalc/MetalCalculator-iOS.ipa',
         requirements: 'iOS 15.0 or later (Direct Enterprise / TestFlight build)',
         sha256: 'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d'
       },
@@ -70,7 +70,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.deb / .AppImage',
         fileName: 'MetalCalc-v1.0.0-amd64.deb',
         fileSize: '43.8 MB',
-        downloadUrl: 'https://github.com/productionargus-wq/Metal-Calculator-And-Quotation-Suite/releases/latest/download/MetalCalculator-Standalone-Windows.exe',
+        downloadUrl: '/downloads/metalcalc/MetalCalc-v1.0.0-amd64.deb',
         requirements: 'Ubuntu 20.04+, Debian 11+, Fedora 36+, or Arch Linux',
         sha256: '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
       }
@@ -103,7 +103,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.exe',
         fileName: 'Argus-Attendance-Intelligence-Setup-Windows.exe',
         fileSize: '152.1 MB',
-        downloadUrl: 'https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Setup-Windows.exe',
+        downloadUrl: '/downloads/attendance/Argus-Attendance-Intelligence-Setup-Windows.exe',
         requirements: 'Windows 10 / 11 (64-bit), LAN connection to biometric hardware',
         sha256: 'c14b7d92ab73f55032a7749f01b014fefb5fb6dee9b7583bbfbf5dec01170940',
         isPrimary: true
@@ -115,7 +115,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.dmg',
         fileName: 'Argus-Attendance-Intelligence-macOS.dmg',
         fileSize: '145.6 MB',
-        downloadUrl: 'https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-macOS.dmg',
+        downloadUrl: '/downloads/attendance/Argus-Attendance-Intelligence-macOS.dmg',
         requirements: 'macOS 12.0 Monterey or later (Universal binary)',
         sha256: 'b82888087b2097217f285b675853319aea97c598d8f15dd6689eaf0a5327ea6e'
       },
@@ -126,7 +126,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.apk',
         fileName: 'Argus-Attendance-Intelligence-Android.apk',
         fileSize: '3.75 MB',
-        downloadUrl: 'https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-Android.apk',
+        downloadUrl: '/downloads/attendance/Argus-Attendance-Intelligence-Android.apk',
         requirements: 'Android 8.0 or later with GPS & Camera support',
         sha256: '07a19d6c3a203fbd698e8918167c457cab6c56f06a89a99643541e28d35d97d0'
       },
@@ -137,7 +137,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.ipa',
         fileName: 'Argus-Attendance-Intelligence-iOS.ipa',
         fileSize: '895 KB',
-        downloadUrl: 'https://github.com/productionargus-wq/Simple-AI-Attendance/releases/latest/download/ArgusAttendance-iOS.ipa',
+        downloadUrl: '/downloads/attendance/Argus-Attendance-Intelligence-iOS.ipa',
         requirements: 'iOS 15.0 or later (Direct Enterprise / TestFlight build)',
         sha256: 'dda92a4586d1665fd3c62f8099c4d5fa46e8b8fdff46fd5824e70eeaac1a7746'
       }
@@ -166,7 +166,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.exe / .msi',
         fileName: 'Argus-Business-Intelligence-v2.0.0-Setup.exe',
         fileSize: '112.5 MB',
-        downloadUrl: 'https://github.com/productionargus-wq/Argus-Portfolio-Website/releases/download/v1.0.0/MetalCalculator-standalone.exe',
+        downloadUrl: '/downloads/erp/Argus-Business-Intelligence-v2.0.0-Setup.exe',
         requirements: 'Windows 10 / 11 / Server 2019+, 8 GB RAM, SQL Server / SQLite',
         sha256: '7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069',
         isPrimary: true
@@ -178,6 +178,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.dmg',
         fileName: 'Argus-Business-Intelligence-v2.0.0.dmg',
         fileSize: '98.4 MB',
+        downloadUrl: '/downloads/erp/Argus-Business-Intelligence-v2.0.0.dmg',
         requirements: 'macOS 12.0 Monterey or later',
         sha256: 'cb8379ac2098aa165029e3938a51da0bcecfc008fd6795f401178647f96c5b34'
       },
@@ -188,6 +189,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.apk',
         fileName: 'Argus-Business-Intelligence-v2.0.0.apk',
         fileSize: '26.7 MB',
+        downloadUrl: '/downloads/erp/Argus-Business-Intelligence-v2.0.0.apk',
         requirements: 'Android 9.0 or later with Camera/2D Scanner',
         sha256: '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce'
       },
@@ -198,6 +200,7 @@ export const PRODUCTS_DOWNLOAD_DATA = {
         extension: '.ipa',
         fileName: 'Argus-Business-Intelligence-v2.0.0.ipa',
         fileSize: '31.0 MB',
+        downloadUrl: '/downloads/erp/Argus-Business-Intelligence-v2.0.0.ipa',
         requirements: 'iOS 15.0 or later',
         sha256: '3a52ce780950d4d969792a2559cd519d7ee8c727bb30a519d2b21e6c530c0eee'
       }
