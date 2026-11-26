@@ -1,6 +1,7 @@
 import React from 'react';
 import { Package, Calculator, Database, LayoutGrid, Users, Download, MessageSquareQuote, Headset, Mail } from 'lucide-react';
 import { SECTIONS_CONFIG } from '../data/sectionsData';
+import argusLogo from '../assets/argus-logo.jpg';
 
 const iconMap = {
   Package: <Package />,
@@ -28,7 +29,7 @@ export default function NavigationRail({ side = 'left', activeSection, onSelectS
             title="ARGUS Softwares - Return to Products Home"
             aria-label="ARGUS Softwares Home"
           >
-            <span>A</span>
+            <img src={argusLogo} alt="ARGUS Softwares" className="brand-mark-img" />
           </button>
         )}
 
