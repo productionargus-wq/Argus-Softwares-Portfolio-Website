@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Star, CheckCircle2, Building2, Quote, ArrowRight, Sparkles } from 'lucide-react';
 import HeroSection from './HeroSection';
+import argusCncLogo from '../../assets/arguscnc-logo.jpg';
 
 const TESTIMONIALS_DATA = [
   {
@@ -286,7 +287,10 @@ export default function TestimonialsView({ onNavigate }) {
 
       <div className="footer-mini">
         <span>Verified client reviews from active industrial deployments.</span>
-        <span>Powered by <strong>ARGUSCNC™</strong></span>
+        <span className="powered-by">
+          Powered by
+          <img src={argusCncLogo} alt="ARGUSCNC™" className="powered-by-logo" />
+        </span>
       </div>
     </>
   );

@@ -1206,6 +1206,20 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
   font-weight: 800;
 }
 
+.footer-mini .powered-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-mini .powered-by-logo {
+  height: 24px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
 /* Toast Notifications */
 .toast {
   position: fixed;

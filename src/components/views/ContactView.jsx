@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Package, Headset, Download, Copy, Send, Check } from 'lucide-react';
 import HeroSection from './HeroSection';
+import argusCncLogo from '../../assets/arguscnc-logo.jpg';
 
 export default function ContactView({ showToast }) {
   const [formData, setFormData] = useState({
@@ -98,7 +99,10 @@ export default function ContactView({ showToast }) {
           </div>
 
           <div className="footer-mini">
-            <span>Powered by <strong>ARGUSCNC™</strong></span>
+            <span className="powered-by">
+              Powered by
+              <img src={argusCncLogo} alt="ARGUSCNC™" className="powered-by-logo" />
+            </span>
             <span>Single-screen contact concept</span>
           </div>
         </div>
